@@ -9,7 +9,7 @@ CODE_ORGANIZATION: code-sena
 <h1 align="center">Joseph Felipe Aguirre Churta</h1>
 
 <p align="center">
-  <img src="https://avatars.githubusercontent.com/u/226169622?=Profile%20views&style=flat-square&color=brightgreen" alt="Profile views">
+  <img src="[https://avatars.githubusercontent.com/u/226169622?](https://github.com/account)=Profile%20views&style=flat-square&color=brightgreen" alt="Profile views">
 </p>
 
 ---
