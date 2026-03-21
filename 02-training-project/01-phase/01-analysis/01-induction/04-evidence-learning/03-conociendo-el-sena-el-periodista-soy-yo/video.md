@@ -1,0 +1,1 @@
+C:\Repos\ADSO-3413974\02-training-project\01-phase\01-analysis\01-induction\04-evidence-learning\03-conociendo-el-sena-el-periodista-soy-yo
