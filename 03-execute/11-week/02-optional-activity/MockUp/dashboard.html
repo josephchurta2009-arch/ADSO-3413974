@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - La Esquina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand text-brand d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-shop fs-4"></i>
+                La Esquina
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUser">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarUser">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=2E7D32&color=fff" class="rounded-circle" width="32" height="32" alt="User">
+                            <span class="fw-medium">Administrador</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.html">
+                                <i class="bi bi-grid fs-5"></i>
+                                Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html">
+                                <i class="bi bi-box-seam fs-5"></i>
+                                Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-clipboard-data fs-5"></i>
+                                Inventario
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pos.html">
+                                <i class="bi bi-cart3 fs-5"></i>
+                                Ventas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-bar-chart fs-5"></i>
+                                Reportes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom-0">
+                    <h1 class="h3 fw-bold mb-0">Resumen del Día</h1>
+                    <div class="text-muted"><i class="bi bi-calendar3 me-2"></i>Viernes, 15 de Mayo</div>
+                </div>
+
+                <!-- Metric Cards -->
+                <div class="row g-4 mb-5">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card h-100 hover-lift">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div>
+                                        <h6 class="card-subtitle text-muted mb-1">Ventas hoy</h6>
+                                        <h3 class="card-title mb-0 fw-bold">42</h3>
+                                    </div>
+                                    <div class="metric-icon bg-brand-light text-brand">
+                                        <i class="bi bi-receipt"></i>
+                                    </div>
+                                </div>
+                                <div class="text-success small fw-medium">
+                                    <i class="bi bi-arrow-up-right me-1"></i> +12% que ayer
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card h-100 hover-lift">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div>
+                                        <h6 class="card-subtitle text-muted mb-1">Productos registrados</h6>
+                                        <h3 class="card-title mb-0 fw-bold">356</h3>
+                                    </div>
+                                    <div class="metric-icon bg-light text-primary">
+                                        <i class="bi bi-box"></i>
+                                    </div>
+                                </div>
+                                <div class="text-muted small">
+                                    En 12 categorías
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card h-100 hover-lift border border-warning-subtle">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div>
+                                        <h6 class="card-subtitle text-muted mb-1">Stock bajo</h6>
+                                        <h3 class="card-title mb-0 fw-bold">8</h3>
+                                    </div>
+                                    <div class="metric-icon bg-warning bg-opacity-10 text-warning position-relative">
+                                        <i class="bi bi-exclamation-triangle"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="text-warning small fw-medium">
+                                    Requiere atención inmediata
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card h-100 hover-lift bg-brand text-white">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <div>
+                                        <h6 class="card-subtitle text-white-50 mb-1">Total del día (COP)</h6>
+                                        <h3 class="card-title mb-0 fw-bold">$450.000</h3>
+                                    </div>
+                                    <div class="metric-icon bg-white bg-opacity-25 text-white">
+                                        <i class="bi bi-currency-dollar"></i>
+                                    </div>
+                                </div>
+                                <div class="text-white-50 small">
+                                    Cierre de caja estimado
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Sales Table -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
+                        <h5 class="fw-bold mb-0">Ventas Recientes</h5>
+                    </div>
+                    <div class="card-body px-0 pb-0">
+                        <div class="table-responsive">
+                            <table class="table table-modern mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="ps-4">Hora</th>
+                                        <th>Producto</th>
+                                        <th class="text-center">Cantidad</th>
+                                        <th class="text-end pe-4">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-4 text-muted">14:32</td>
+                                        <td><span class="fw-medium">Arroz Roa 500g</span></td>
+                                        <td class="text-center">2</td>
+                                        <td class="text-end pe-4 fw-medium">$4.600</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 text-muted">14:15</td>
+                                        <td>
+                                            <span class="fw-medium d-block">Coca-Cola 1.5L</span>
+                                            <span class="small text-muted">+ Papas Margarita</span>
+                                        </td>
+                                        <td class="text-center">3</td>
+                                        <td class="text-end pe-4 fw-medium">$12.500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 text-muted">13:45</td>
+                                        <td><span class="fw-medium">Leche Alquería 1L</span></td>
+                                        <td class="text-center">1</td>
+                                        <td class="text-end pe-4 fw-medium">$3.800</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 text-muted">13:20</td>
+                                        <td><span class="fw-medium">Pan Tajado Bimbo</span></td>
+                                        <td class="text-center">1</td>
+                                        <td class="text-end pe-4 fw-medium">$5.200</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 text-muted">12:50</td>
+                                        <td><span class="fw-medium">Huevos Tipo A (Panal x30)</span></td>
+                                        <td class="text-center">1</td>
+                                        <td class="text-end pe-4 fw-medium">$15.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 p-3 text-center">
+                        <a href="#" class="text-brand fw-medium text-decoration-none small">Ver todas las ventas <i class="bi bi-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

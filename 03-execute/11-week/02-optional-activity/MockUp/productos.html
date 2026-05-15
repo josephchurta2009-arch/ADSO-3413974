@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - La Esquina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand text-brand d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-shop fs-4"></i>
+                La Esquina
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUser">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarUser">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=2E7D32&color=fff" class="rounded-circle" width="32" height="32" alt="User">
+                            <span class="fw-medium">Administrador</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-grid fs-5"></i>
+                                Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="productos.html">
+                                <i class="bi bi-box-seam fs-5"></i>
+                                Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-clipboard-data fs-5"></i>
+                                Inventario
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pos.html">
+                                <i class="bi bi-cart3 fs-5"></i>
+                                Ventas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-bar-chart fs-5"></i>
+                                Reportes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                
+                <!-- Low Stock Alert -->
+                <div class="alert alert-warning d-flex align-items-center shadow-sm border-warning-subtle mb-4 rounded-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill fs-4 text-warning me-3"></i>
+                    <div>
+                        <h6 class="alert-heading fw-bold mb-1">Atención</h6>
+                        <div class="mb-0">⚠ 3 productos con stock bajo. Se recomienda realizar pedido a proveedores pronto.</div>
+                    </div>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <!-- Page Header -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Gestión de Productos</h1>
+                        <p class="text-muted mb-0">Administra el catálogo de tu supermercado</p>
+                    </div>
+                    <button class="btn btn-brand shadow-sm">
+                        <i class="bi bi-plus-lg me-2"></i>Agregar producto
+                    </button>
+                </div>
+
+                <!-- Filters & Search -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body p-3">
+                        <div class="row g-3">
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                                    <input type="text" class="form-control border-start-0 bg-light" placeholder="Buscar por nombre o código...">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select bg-light border-0">
+                                    <option selected>Todas las categorías</option>
+                                    <option value="1">Abarrotes</option>
+                                    <option value="2">Lácteos</option>
+                                    <option value="3">Bebidas</option>
+                                    <option value="4">Aseo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select bg-light border-0">
+                                    <option selected>Cualquier stock</option>
+                                    <option value="1">Stock normal</option>
+                                    <option value="2">Stock bajo</option>
+                                    <option value="3">Agotados</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1 d-grid">
+                                <button class="btn btn-outline-secondary border-0 bg-light"><i class="bi bi-funnel"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="card shadow-sm">
+                    <div class="card-body px-0 pb-0 pt-2">
+                        <div class="table-responsive">
+                            <table class="table table-modern mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="ps-4">Código</th>
+                                        <th>Nombre</th>
+                                        <th>Categoría</th>
+                                        <th class="text-end">Precio</th>
+                                        <th class="text-center">Stock</th>
+                                        <th class="text-center pe-4">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-4 text-muted font-monospace small">7702004001234</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-light rounded p-2 text-muted"><i class="bi bi-box"></i></div>
+                                                <span class="fw-medium">Arroz Roa 500g</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-light text-secondary border">Abarrotes</span></td>
+                                        <td class="text-end fw-medium">$2.300</td>
+                                        <td class="text-center"><span class="badge bg-success bg-opacity-10 text-success px-2 py-1 border border-success-subtle rounded-pill">45 un</span></td>
+                                        <td class="text-center pe-4">
+                                            <i class="bi bi-pencil-square action-icon me-2" title="Editar"></i>
+                                            <i class="bi bi-trash action-icon delete" title="Eliminar"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 text-muted font-monospace small">7702004005678</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-light rounded p-2 text-muted"><i class="bi bi-cup-straw"></i></div>
+                                                <span class="fw-medium">Coca-Cola 1.5L</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-light text-secondary border">Bebidas</span></td>
+                                        <td class="text-end fw-medium">$6.500</td>
+                                        <td class="text-center"><span class="badge bg-success bg-opacity-10 text-success px-2 py-1 border border-success-subtle rounded-pill">24 un</span></td>
+                                        <td class="text-center pe-4">
+                                            <i class="bi bi-pencil-square action-icon me-2" title="Editar"></i>
+                                            <i class="bi bi-trash action-icon delete" title="Eliminar"></i>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-warning bg-opacity-10">
+                                        <td class="ps-4 text-muted font-monospace small">7702004009012</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-warning bg-opacity-10 rounded p-2 text-warning"><i class="bi bi-bucket"></i></div>
+                                                <span class="fw-medium">Detergente Ariel 1kg</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-light text-secondary border">Aseo</span></td>
+                                        <td class="text-end fw-medium">$9.200</td>
+                                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1 border border-warning-subtle rounded-pill">2 un</span></td>
+                                        <td class="text-center pe-4">
+                                            <i class="bi bi-pencil-square action-icon me-2" title="Editar"></i>
+                                            <i class="bi bi-trash action-icon delete" title="Eliminar"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 text-muted font-monospace small">7702004003456</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-light rounded p-2 text-muted"><i class="bi bi-droplet"></i></div>
+                                                <span class="fw-medium">Leche Alquería 1L</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-light text-secondary border">Lácteos</span></td>
+                                        <td class="text-end fw-medium">$3.800</td>
+                                        <td class="text-center"><span class="badge bg-success bg-opacity-10 text-success px-2 py-1 border border-success-subtle rounded-pill">12 un</span></td>
+                                        <td class="text-center pe-4">
+                                            <i class="bi bi-pencil-square action-icon me-2" title="Editar"></i>
+                                            <i class="bi bi-trash action-icon delete" title="Eliminar"></i>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-warning bg-opacity-10">
+                                        <td class="ps-4 text-muted font-monospace small">7702004007890</td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-warning bg-opacity-10 rounded p-2 text-warning"><i class="bi bi-egg"></i></div>
+                                                <span class="fw-medium">Huevos Tipo A x30</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-light text-secondary border">Abarrotes</span></td>
+                                        <td class="text-end fw-medium">$15.000</td>
+                                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1 border border-warning-subtle rounded-pill">3 un</span></td>
+                                        <td class="text-center pe-4">
+                                            <i class="bi bi-pencil-square action-icon me-2" title="Editar"></i>
+                                            <i class="bi bi-trash action-icon delete" title="Eliminar"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="card-footer bg-white border-top-0 p-3 d-flex justify-content-between align-items-center">
+                        <span class="text-muted small">Mostrando 1-5 de 356 productos</span>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                                <li class="page-item active"><a class="page-link bg-brand border-brand" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link text-brand" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link text-brand" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link text-brand" href="#">Siguiente</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto de Venta - La Esquina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand text-brand d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-shop fs-4"></i>
+                La Esquina <span class="badge bg-brand-light text-brand ms-2 fs-6 fw-normal">Caja 1</span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span class="text-muted small"><i class="bi bi-clock me-1"></i> <span id="clock">14:35:00</span></span>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Carlos+Cajero&background=f1f8e9&color=2E7D32" class="rounded-circle" width="32" height="32" alt="User">
+                        <span class="fw-medium">Carlos (Cajero)</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                        <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- POS Layout -->
+    <div class="container-fluid p-0 pos-layout">
+        <div class="row g-0 h-100">
+            <!-- Left Panel: Products -->
+            <div class="col-lg-8 col-xl-9 d-flex flex-column h-100 bg-main">
+                <div class="p-3 bg-white border-bottom">
+                    <div class="input-group input-group-lg shadow-sm">
+                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-start-0 ps-0 focus-ring focus-ring-light" placeholder="Buscar producto por nombre o código de barras..." autofocus>
+                        <button class="btn btn-brand px-4"><i class="bi bi-upc-scan me-2"></i>Escanear</button>
+                    </div>
+                </div>
+                
+                <div class="p-4 pos-products-panel">
+                    <!-- Categories -->
+                    <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
+                        <button class="btn btn-brand rounded-pill px-3">Todos</button>
+                        <button class="btn btn-outline-secondary rounded-pill px-3 bg-white">Abarrotes</button>
+                        <button class="btn btn-outline-secondary rounded-pill px-3 bg-white">Bebidas</button>
+                        <button class="btn btn-outline-secondary rounded-pill px-3 bg-white">Lácteos</button>
+                        <button class="btn btn-outline-secondary rounded-pill px-3 bg-white">Snacks</button>
+                        <button class="btn btn-outline-secondary rounded-pill px-3 bg-white">Aseo</button>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="row g-3">
+                        <!-- Product Item -->
+                        <div class="col-6 col-md-4 col-xl-3">
+                            <div class="card h-100 product-card shadow-sm">
+                                <div class="card-body text-center p-3">
+                                    <div class="fs-1 text-muted mb-2"><i class="bi bi-box"></i></div>
+                                    <h6 class="card-title text-truncate mb-1">Arroz Roa 500g</h6>
+                                    <div class="text-brand fw-bold fs-5 mb-2">$2.300</div>
+                                    <span class="badge bg-light text-dark border">Stock: 45</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-3">
+                            <div class="card h-100 product-card shadow-sm">
+                                <div class="card-body text-center p-3">
+                                    <div class="fs-1 text-muted mb-2"><i class="bi bi-cup-straw"></i></div>
+                                    <h6 class="card-title text-truncate mb-1">Coca-Cola 1.5L</h6>
+                                    <div class="text-brand fw-bold fs-5 mb-2">$6.500</div>
+                                    <span class="badge bg-light text-dark border">Stock: 24</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-3">
+                            <div class="card h-100 product-card shadow-sm">
+                                <div class="card-body text-center p-3">
+                                    <div class="fs-1 text-muted mb-2"><i class="bi bi-droplet"></i></div>
+                                    <h6 class="card-title text-truncate mb-1">Leche Alquería 1L</h6>
+                                    <div class="text-brand fw-bold fs-5 mb-2">$3.800</div>
+                                    <span class="badge bg-light text-dark border">Stock: 12</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-3">
+                            <div class="card h-100 product-card shadow-sm">
+                                <div class="card-body text-center p-3">
+                                    <div class="fs-1 text-muted mb-2"><i class="bi bi-egg"></i></div>
+                                    <h6 class="card-title text-truncate mb-1">Huevos Tipo A x30</h6>
+                                    <div class="text-brand fw-bold fs-5 mb-2">$15.000</div>
+                                    <span class="badge bg-light text-dark border">Stock: 8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-xl-3">
+                            <div class="card h-100 product-card shadow-sm border-warning-subtle">
+                                <div class="card-body text-center p-3">
+                                    <div class="fs-1 text-muted mb-2"><i class="bi bi-bucket"></i></div>
+                                    <h6 class="card-title text-truncate mb-1">Detergente Ariel 1kg</h6>
+                                    <div class="text-brand fw-bold fs-5 mb-2">$9.200</div>
+                                    <span class="badge bg-warning text-dark border border-warning">Stock: 2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Cart Summary -->
+            <div class="col-lg-4 col-xl-3 pos-summary-panel shadow-sm position-relative z-1">
+                <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light">
+                    <h5 class="mb-0 fw-bold">Venta Actual</h5>
+                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Vaciar</button>
+                </div>
+                
+                <div class="pos-cart-items">
+                    <!-- Cart Item -->
+                    <div class="pos-cart-item d-flex justify-content-between align-items-center">
+                        <div class="flex-grow-1">
+                            <div class="fw-medium">Arroz Roa 500g</div>
+                            <div class="text-muted small">$2.300 / un</div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="input-group input-group-sm" style="width: 90px;">
+                                <button class="btn btn-outline-secondary px-2" type="button">-</button>
+                                <input type="text" class="form-control text-center px-1" value="2">
+                                <button class="btn btn-outline-secondary px-2" type="button">+</button>
+                            </div>
+                            <div class="fw-bold text-end" style="width: 70px;">$4.600</div>
+                        </div>
+                    </div>
+                    <!-- Cart Item -->
+                    <div class="pos-cart-item d-flex justify-content-between align-items-center">
+                        <div class="flex-grow-1">
+                            <div class="fw-medium">Leche Alquería 1L</div>
+                            <div class="text-muted small">$3.800 / un</div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="input-group input-group-sm" style="width: 90px;">
+                                <button class="btn btn-outline-secondary px-2" type="button">-</button>
+                                <input type="text" class="form-control text-center px-1" value="1">
+                                <button class="btn btn-outline-secondary px-2" type="button">+</button>
+                            </div>
+                            <div class="fw-bold text-end" style="width: 70px;">$3.800</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pos-totals mt-auto shadow-lg">
+                    <div class="d-flex justify-content-between mb-2 text-muted">
+                        <span>Subtotal</span>
+                        <span>$8.400</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2 text-muted">
+                        <span>Impuestos (0%)</span>
+                        <span>$0</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-end mb-4">
+                        <span class="fs-5 fw-medium">Total</span>
+                        <span class="fs-1 fw-bold text-brand lh-1">$8.400</span>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-brand btn-lg py-3 fs-5 fw-bold shadow-sm d-flex justify-content-between align-items-center">
+                            <span>Cobrar</span>
+                            <span><i class="bi bi-arrow-right-circle fs-4"></i></span>
+                        </button>
+                        <button class="btn btn-light text-danger fw-medium py-2">
+                            Cancelar Venta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
