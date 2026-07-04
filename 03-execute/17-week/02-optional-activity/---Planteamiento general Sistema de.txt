@@ -1,0 +1,91 @@
+---Planteamiento general: Sistema de asistencias en el ambiente de manera mas eficiente sin usar Sena Sofia.
+
+
+# Requerimientos Funcionales (RF)
+
+## RF-01 - Gestión de Asistencias
+**Descripción:**  
+El sistema deberá permitir al instructor registrar la asistencia de los aprendices de una ficha, indicando el estado de cada uno (Presente, Ausente, Tarde o Justificado).
+
+**Prioridad:** Alta
+
+**Entradas:**
+- Ficha seleccionada.
+- Lista de aprendices.
+- Estado de asistencia.
+
+**Salidas:**
+- Registro de asistencia almacenado correctamente.
+
+
+
+## RF-02 - Generación de Código QR
+**Descripción:**  
+El sistema deberá generar un código QR temporal para cada sesión de clase, permitiendo a los aprendices registrar su asistencia mediante escaneo.
+
+**Prioridad:** Alta
+
+**Entradas:**
+- Ficha.
+- Ambiente.
+- Fecha y hora de la sesión.
+
+**Salidas:**
+- Código QR válido durante el tiempo configurado.
+
+
+
+## RF-03 - Consulta de Asistencias
+**Descripción:**  
+El sistema deberá permitir consultar el historial de asistencias por aprendiz, ficha o rango de fechas.
+
+**Prioridad:** Alta
+
+**Entradas:**
+- Filtros de búsqueda.
+
+**Salidas:**
+- Lista de registros de asistencia.
+
+
+
+## RF-04 - Gestión de Horarios
+**Descripción:**  
+El sistema deberá permitir registrar, modificar y consultar los horarios asignados a cada ficha y ambiente.
+
+**Prioridad:** Media
+
+**Entradas:**
+- Ficha.
+- Ambiente.
+- Instructor.
+- Horario.
+
+**Salidas:**
+- Horario actualizado.
+
+
+
+# Requerimientos No Funcionales (RNF)
+
+## RNF-01 - Rendimiento
+**Descripción:**  
+El sistema deberá registrar una asistencia en un tiempo máximo de 2 segundos bajo condiciones normales de uso.
+
+
+
+## RNF-02 - Disponibilidad
+**Descripción:**  
+El sistema deberá estar disponible al menos el 99% del tiempo durante el horario académico.
+
+
+
+## RNF-03 - Usabilidad
+**Descripción:**  
+La interfaz deberá ser intuitiva y permitir que un instructor complete el registro de asistencia de un grupo en menos de 3 minutos sin capacitación especializada.
+
+
+
+## RNF-04 - Compatibilidad
+**Descripción:**  
+El sistema deberá funcionar correctamente en los navegadores Google Chrome, Microsoft Edge y Mozilla Firefox, además de dispositivos móviles.
