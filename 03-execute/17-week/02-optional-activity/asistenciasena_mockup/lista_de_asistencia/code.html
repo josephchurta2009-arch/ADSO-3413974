@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SENA Attendance - Manual Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00322d",
+                        "on-primary-fixed": "#00201d",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary": "#001b18",
+                        "on-surface": "#0b1c30",
+                        "attendance-late": "#F59E0B",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed": "#311208",
+                        "on-secondary": "#ffffff",
+                        "attendance-present": "#22C55E",
+                        "primary-fixed-dim": "#a3cfc8",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-tertiary-container": "#bb8776",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#8afd5d",
+                        "inverse-primary": "#a3cfc8",
+                        "on-secondary-container": "#257400",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface-variant": "#404847",
+                        "on-secondary-fixed": "#052100",
+                        "outline-variant": "#c0c8c6",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#f3b9a7",
+                        "on-primary-container": "#709b94",
+                        "secondary-fixed-dim": "#6fdf43",
+                        "on-tertiary-fixed-variant": "#653c2f",
+                        "inverse-surface": "#213145",
+                        "background": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container": "#e5eeff",
+                        "tertiary": "#2c0e05",
+                        "attendance-absent": "#EF4444",
+                        "surface-muted": "#F8FAFC",
+                        "on-primary-fixed-variant": "#234e48",
+                        "primary-fixed": "#beece3",
+                        "outline": "#717977",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed": "#8afd5d",
+                        "attendance-justified": "#3B82F6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "background-main": "#FFFFFF",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#452216",
+                        "secondary": "#226d00",
+                        "on-secondary-fixed-variant": "#185200",
+                        "surface-bright": "#f8f9ff",
+                        "surface-tint": "#3b6660",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "touch-target": "48px",
+                        "base": "4px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-md-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .attendance-row-transition {
+            transition: background-color 0.2s ease;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background min-h-screen pb-24 overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-background-main z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-md py-sm w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+<h1 class="font-headline-md-mobile text-headline-md-mobile text-primary tracking-tight">SENA Attendance</h1>
+</div>
+<div class="w-touch-target h-touch-target rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a vocational instructor in a modern educational setting. The lighting is soft and natural, emphasizing a trustworthy and helpful demeanor. The background is a clean, minimalist office with subtle SENA branding colors like deep green and slate gray. High-quality corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSBXa8dEpjHIZkketbn4qg7H2PKfXADIGjR1enui7tm_cf9JMnOI5TsUSFbZ_3yqaHoAN1DXfh1KV0msPhwGWQHbU929ylfwiNs_MxeeYIOJxlRxvDYjyaiqB-gHNexpxN9hMr3Cta4fg-0qDIRLYGMNlQEp3PHaCmdhra8qjTNd6lnLYX_FAH2jjUF4hbaGFcCz65XXaLQeaVK9H2KpoJ-_MXV_ofQKWg8wv5YGe4eapane9Z8QkmVkt2eF-3lDel_sLQ_9CmfUo"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-md">
+<!-- Context Header -->
+<div class="mb-md">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Ficha 2559000 - ADSO</h2>
+<div class="flex justify-between items-center mt-xs">
+<span class="font-label-lg text-label-lg text-on-surface-variant">Análisis y Desarrollo de Software</span>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-sm py-xs rounded-full font-label-md text-label-md">18/25 Present</span>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-lg">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-touch-target pl-xl pr-md bg-surface-container-low border border-outline-variant rounded-xl focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-md text-body-md" placeholder="Search apprentice..." type="text"/>
+</div>
+<!-- Apprentice List -->
+<section class="space-y-sm">
+<!-- Apprentice Row 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-md attendance-row-transition hover:bg-surface-container-low shadow-sm">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a young male software development student with a focused expression. He is wearing a simple polo shirt. The lighting is bright and even, set against a blurred modern computer lab background. The aesthetic is clean and institutional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBU3vHxbjgcn3asG3GhcjT-CsvPZ6mf5keuChbrEUqKnKDRDBTVeWrY5vCGpTPOTXB1zL4WtTsCh2s-zic5Sif-ucHBzEHgjeIj2DD2-p41hbZi3LgI7AjwvPseBp_UpCon2Z2K28nTF5g5wfE8g4FqvNHSAZ2aiTrEEpo_hqp9OfiyMB_FzWf0ZmDyaXSQ0-otY8pzifHilWCTN-53I8FPTxviuemTjofyQ7-0BTeJkdoXf_mGJSIDtqFuxuoG8sDgU_buSL6c6A"/>
+</div>
+<div class="flex-grow min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Alejandro Ruiz</p>
+<p class="font-label-md text-label-md text-outline truncate">ID: 1002344556</p>
+</div>
+<div class="flex items-center gap-xs shrink-0">
+<button class="w-10 h-10 rounded-lg border border-attendance-present text-attendance-present font-bold flex items-center justify-center bg-attendance-present/10 active:bg-attendance-present active:text-white transition-colors" title="Present">P</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors" title="Absent">A</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors" title="Tardy">T</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors" title="Justified">J</button>
+</div>
+</div>
+<!-- Apprentice Row 2 (Active state example) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-md attendance-row-transition hover:bg-surface-container-low shadow-sm">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young woman student with glasses, smiling confidently. She is wearing professional casual attire suitable for a vocational training environment. The lighting is bright and professional, suggesting a bright future in the tech industry. Clean minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN2ZQTE0hglX0BN9GHM03jM0AnmBO_WluIsyAG092IbcansmuXyOlymZYaX3E-JrPmRqRyZowPsVnvQrbsxHCgEZhi9yCgaGuj1WNvNyr3PXE7BZge8NjoOQmabweNqU4YpDd7ZgMlYWJhgAPijRAxE77B80Mu8Q5JzD2ErEXNVYlsnzc26lfZHQqgNr9gcefXNE2cSd5wsp4PSQxP2qk7xpdywIXR9jXfdPAZ45JXuAcEssTtJdWSC43lSGskzl-sAiSicZY33lI"/>
+</div>
+<div class="flex-grow min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Camila Torres</p>
+<p class="font-label-md text-label-md text-outline truncate">ID: 1098776543</p>
+</div>
+<div class="flex items-center gap-xs shrink-0">
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">P</button>
+<button class="w-10 h-10 rounded-lg bg-attendance-absent text-white font-bold flex items-center justify-center shadow-sm" title="Absent">A</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">T</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">J</button>
+</div>
+</div>
+<!-- Apprentice Row 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-md attendance-row-transition hover:bg-surface-container-low shadow-sm">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young male apprentice in a technology classroom. He has a friendly and approachable look. The lighting is crisp, highlighting the textures of his clothing. Background features subtle hints of electronic equipment and workstations in a clean vocational school setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFRySGQzFE8Je5l7073N2HJ3IY_-ToeuSHxPvLpsaNEH03uxpgrHjYOgvlH6iGzlegY7OfWJN4UlGdF6wZ7mHGWqdBTJ_V8BjPtriwILD4gim9jWQfltpWeLO8R9EE7ubnACsa_JEgmlxrZyynfv4znHrMKxKN8ZmNm5H0OWVaE4GV5sg4fAIzSVoX7tpH6wAI9Yjec4Izw4nPPmPaFUu_JUtOaE2DXaDjf-btgP1-_LuSjmolobzMYpoIsja9QDZC4lL2BqtZqyk"/>
+</div>
+<div class="flex-grow min-w-0">
+<p class="font-label-lg text-label-lg text-on-surface truncate">Daniel Gomez</p>
+<p class="font-label-md text-label-md text-outline truncate">ID: 1011223344</p>
+</div>
+<div class="flex items-center gap-xs shrink-0">
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">P</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">A</button>
+<button class="w-10 h-10 rounded-lg bg-attendance-late text-white font-bold flex items-center justify-center shadow-sm" title="Tardy">T</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">J</button>
+</div>
+</div>
+<!-- More rows generated via script for flow -->
+<div id="extra-rows"></div>
+</section>
+</main>
+<!-- Floating Action Button (Save) -->
+<button class="fixed right-md bottom-28 bg-primary-container text-on-primary text-headline-sm flex items-center gap-sm px-xl py-md rounded-full shadow-lg active:scale-95 transition-all duration-150 z-40">
+<span class="material-symbols-outlined" data-icon="save" style="font-variation-settings: 'FILL' 1;">save</span>
+<span>Save</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-sm py-xs h-touch-target bg-surface-container-lowest shadow-[0_-4px_12px_rgba(0,0,0,0.08)] z-50 rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-outline px-md py-xs hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-md py-xs active:scale-95 transition-transform duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-label-md text-label-md">Sessions</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline px-md py-xs hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-md text-label-md">QR</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline px-md py-xs hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</div>
+</nav>
+<script>
+        // Populate more rows for scrollability demonstration
+        const extraRowsContainer = document.getElementById('extra-rows');
+        const names = ["Isabella Marin", "Juan Pablo Arias", "Sofia Lopez", "Mateo Valencia", "Valeria Rojas"];
+        const ids = ["10001", "10002", "10003", "10004", "10005"];
+        
+        names.forEach((name, i) => {
+            const row = document.createElement('div');
+            row.className = "bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-md mt-sm attendance-row-transition hover:bg-surface-container-low shadow-sm";
+            row.innerHTML = `
+                <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high shrink-0">
+                    <img src="placeholder" data-alt="Close-up face of a student, ${name}, looking ahead with a neutral, professional expression. The background is a brightly lit vocational classroom with technical diagrams. The style is modern, professional, and captures the academic environment of SENA." class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow min-w-0">
+                    <p class="font-label-lg text-label-lg text-on-surface truncate">${name}</p>
+                    <p class="font-label-md text-label-md text-outline truncate">ID: 109${ids[i]}223</p>
+                </div>
+                <div class="flex items-center gap-xs shrink-0">
+                    <button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">P</button>
+                    <button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">A</button>
+                    <button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">T</button>
+                    <button class="w-10 h-10 rounded-lg border border-outline-variant text-outline font-bold flex items-center justify-center hover:bg-surface-variant transition-colors">J</button>
+                </div>
+            `;
+            extraRowsContainer.appendChild(row);
+        });
+
+        // Simple button toggle logic for demonstration
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn || !btn.parentElement.classList.contains('shrink-0')) return;
+            
+            const row = btn.closest('.flex-items-center');
+            const buttons = btn.parentElement.querySelectorAll('button');
+            
+            buttons.forEach(b => {
+                b.classList.remove('bg-attendance-present', 'bg-attendance-absent', 'bg-attendance-late', 'bg-attendance-justified', 'text-white');
+                b.classList.add('border-outline-variant', 'text-outline');
+            });
+
+            btn.classList.remove('border-outline-variant', 'text-outline');
+            const type = btn.innerText;
+            if (type === 'P') btn.classList.add('bg-attendance-present', 'text-white');
+            if (type === 'A') btn.classList.add('bg-attendance-absent', 'text-white');
+            if (type === 'T') btn.classList.add('bg-attendance-late', 'text-white');
+            if (type === 'J') btn.classList.add('bg-attendance-justified', 'text-white');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SENA Attendance - Historial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#00322d",
+                    "on-primary-fixed": "#00201d",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary": "#001b18",
+                    "on-surface": "#0b1c30",
+                    "attendance-late": "#F59E0B",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#311208",
+                    "on-secondary": "#ffffff",
+                    "attendance-present": "#22C55E",
+                    "primary-fixed-dim": "#a3cfc8",
+                    "tertiary-fixed": "#ffdbd0",
+                    "on-tertiary-container": "#bb8776",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#8afd5d",
+                    "inverse-primary": "#a3cfc8",
+                    "on-secondary-container": "#257400",
+                    "surface-variant": "#d3e4fe",
+                    "on-surface-variant": "#404847",
+                    "on-secondary-fixed": "#052100",
+                    "outline-variant": "#c0c8c6",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#f3b9a7",
+                    "on-primary-container": "#709b94",
+                    "secondary-fixed-dim": "#6fdf43",
+                    "on-tertiary-fixed-variant": "#653c2f",
+                    "inverse-surface": "#213145",
+                    "background": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container": "#e5eeff",
+                    "tertiary": "#2c0e05",
+                    "attendance-absent": "#EF4444",
+                    "surface-muted": "#F8FAFC",
+                    "on-primary-fixed-variant": "#234e48",
+                    "primary-fixed": "#beece3",
+                    "outline": "#717977",
+                    "on-background": "#0b1c30",
+                    "secondary-fixed": "#8afd5d",
+                    "attendance-justified": "#3B82F6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "background-main": "#FFFFFF",
+                    "surface": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#452216",
+                    "secondary": "#226d00",
+                    "on-secondary-fixed-variant": "#185200",
+                    "surface-bright": "#f8f9ff",
+                    "surface-tint": "#3b6660",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "touch-target": "48px",
+                    "base": "4px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "container-max": "1280px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .row-expanded {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .row-collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-background-main dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-none">
+<div class="flex justify-between items-center px-md py-sm w-full max-w-container-max mx-auto h-touch-target">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="school">school</span>
+<h1 class="font-display-lg text-display-lg text-primary dark:text-primary-fixed tracking-tight">SENA Attendance</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-xs rounded-full hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="ios_share">ios_share</span>
+</button>
+<div class="w-touch-target h-touch-target rounded-full bg-surface-container flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a vocational instructor with a kind smile, wearing a professional SENA branded vest. The background is a clean, bright, modern educational setting with soft natural lighting and institutional corporate colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_nfQ5j4-NaXW2EcLZMHK2FOo6lPJ-xk4pWb5LnSYoIgSYytVuGuGKEUSdlYC-dwZhu9o01i-1_4fGpoUk09UvNcsanomGb6npUOF_wBGaXjK5Xd_2O3CeK3qGZsTAHO6WXqLz4Qi7ZG5gdlx2gfPq4ShjKal2RrukAHMP6KqjPW-TwVXhDUhBpxKrz8k2IZr4PpGoR7paD7mpfl2BZLxtNQEwgZAiu0Je7KW_mXPQJlGuRKMBA18XJNuxw7VvCNUnuA3pdKkoYZ8"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-lg space-y-lg">
+<!-- Filter Bar -->
+<section class="bg-background-main rounded-xl p-md border border-outline-variant shadow-sm space-y-md">
+<div class="flex flex-col md:flex-row gap-md">
+<div class="flex-1 space-y-xs">
+<label class="font-label-md text-label-md text-outline">Date Range</label>
+<div class="flex items-center gap-sm border border-outline rounded-lg px-sm h-touch-target">
+<span class="material-symbols-outlined text-outline" data-icon="calendar_month">calendar_month</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-sm text-on-surface" type="text" value="Oct 01, 2023 - Oct 31, 2023"/>
+</div>
+</div>
+<div class="flex-1 space-y-xs">
+<label class="font-label-md text-label-md text-outline">Ficha / Program</label>
+<div class="flex items-center gap-sm border border-outline rounded-lg px-sm h-touch-target">
+<span class="material-symbols-outlined text-outline" data-icon="groups">groups</span>
+<select class="bg-transparent border-none focus:ring-0 w-full font-body-sm text-on-surface appearance-none">
+<option>ADSO - 2559234</option>
+<option>ADSO - 2559235</option>
+<option>Multimedia - 248812</option>
+</select>
+</div>
+</div>
+<div class="flex items-end">
+<button class="bg-primary-container text-on-primary h-touch-target px-lg rounded-lg font-label-lg flex items-center justify-center gap-sm hover:opacity-90 transition-opacity w-full md:w-auto">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                        Apply Filters
+                    </button>
+</div>
+</div>
+</section>
+<!-- Attendance Stats Summary (Visual Interest) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-outline">Total Sessions</p>
+<p class="font-headline-md text-headline-md text-primary">24</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-outline">Avg. Attendance</p>
+<p class="font-headline-md text-headline-md text-attendance-present">92.4%</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-outline">Total Records</p>
+<p class="font-headline-md text-headline-md text-primary">720</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant">
+<p class="font-label-md text-label-md text-outline">Active Fichas</p>
+<p class="font-headline-md text-headline-md text-primary">03</p>
+</div>
+</div>
+<!-- History List -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-sm text-headline-sm text-primary">Session Records</h2>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-sm py-xs border border-outline rounded-lg text-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+                        PDF
+                    </button>
+<button class="flex items-center gap-xs px-sm py-xs border border-outline rounded-lg text-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="table_view">table_view</span>
+                        Excel
+                    </button>
+</div>
+</div>
+<!-- Table-like List -->
+<div class="bg-background-main rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+<!-- Header -->
+<div class="grid grid-cols-12 gap-md px-md py-sm bg-surface-container-low border-b border-outline-variant">
+<div class="col-span-4 font-label-md text-label-md text-outline uppercase tracking-wider">Date & Time</div>
+<div class="col-span-3 font-label-md text-label-md text-outline uppercase tracking-wider">Ficha</div>
+<div class="col-span-3 font-label-md text-label-md text-outline uppercase tracking-wider">Attendance</div>
+<div class="col-span-2 text-right font-label-md text-label-md text-outline uppercase tracking-wider">Action</div>
+</div>
+<!-- History Rows -->
+<div id="history-container">
+<!-- Row 1 -->
+<div class="border-b border-outline-variant last:border-0 group">
+<div class="grid grid-cols-12 gap-md px-md py-md items-center cursor-pointer hover:bg-surface-container-high transition-colors duration-200" onclick="toggleDetails('details-1')">
+<div class="col-span-4 flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="event">event</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Oct 24, 2023</span>
+<span class="font-label-md text-label-md text-outline">07:30 AM</span>
+</div>
+</div>
+<div class="col-span-3 font-body-md text-on-surface">ADSO-2559234</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-attendance-present h-full w-[96%]"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-attendance-present">96%</span>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="material-symbols-outlined text-outline transition-transform duration-300" data-icon="expand_more" id="icon-details-1">expand_more</span>
+</div>
+</div>
+<!-- Details (Revealed on click) -->
+<div class="row-collapsed transition-all duration-300 ease-in-out bg-surface-container-lowest" id="details-1">
+<div class="px-md py-md border-t border-dashed border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="p-sm bg-surface-container rounded-lg flex items-center gap-md">
+<div class="p-xs rounded-full bg-attendance-present bg-opacity-20 text-attendance-present">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-outline">Present</p>
+<p class="font-headline-sm">24</p>
+</div>
+</div>
+<div class="p-sm bg-surface-container rounded-lg flex items-center gap-md">
+<div class="p-xs rounded-full bg-attendance-absent bg-opacity-20 text-attendance-absent">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</div>
+<div>
+<p class="font-label-md text-outline">Absent</p>
+<p class="font-headline-sm">1</p>
+</div>
+</div>
+<div class="p-sm bg-surface-container rounded-lg flex items-center gap-md">
+<div class="p-xs rounded-full bg-attendance-late bg-opacity-20 text-attendance-late">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="font-label-md text-outline">Late</p>
+<p class="font-headline-sm">0</p>
+</div>
+</div>
+</div>
+<div class="mt-md flex justify-end">
+<button class="text-primary font-label-lg flex items-center gap-xs hover:underline">
+                                        View full list <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="border-b border-outline-variant last:border-0 group">
+<div class="grid grid-cols-12 gap-md px-md py-md items-center cursor-pointer hover:bg-surface-container-high transition-colors duration-200" onclick="toggleDetails('details-2')">
+<div class="col-span-4 flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="event">event</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Oct 22, 2023</span>
+<span class="font-label-md text-label-md text-outline">08:00 AM</span>
+</div>
+</div>
+<div class="col-span-3 font-body-md text-on-surface">ADSO-2559234</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-attendance-present h-full w-[88%]"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-attendance-present">88%</span>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="material-symbols-outlined text-outline transition-transform duration-300" data-icon="expand_more" id="icon-details-2">expand_more</span>
+</div>
+</div>
+<div class="row-collapsed transition-all duration-300 ease-in-out bg-surface-container-lowest" id="details-2">
+<div class="px-md py-md border-t border-dashed border-outline-variant">
+<!-- Similar detailed content -->
+<p class="font-body-sm text-outline">Details for session on Oct 22 are identical in structure...</p>
+</div>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="border-b border-outline-variant last:border-0 group">
+<div class="grid grid-cols-12 gap-md px-md py-md items-center cursor-pointer hover:bg-surface-container-high transition-colors duration-200" onclick="toggleDetails('details-3')">
+<div class="col-span-4 flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="event">event</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Oct 19, 2023</span>
+<span class="font-label-md text-label-md text-outline">07:30 AM</span>
+</div>
+</div>
+<div class="col-span-3 font-body-md text-on-surface">Multimedia-248812</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-attendance-late h-full w-[72%]"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-attendance-late">72%</span>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="material-symbols-outlined text-outline transition-transform duration-300" data-icon="expand_more" id="icon-details-3">expand_more</span>
+</div>
+</div>
+<div class="row-collapsed transition-all duration-300 ease-in-out bg-surface-container-lowest" id="details-3">
+<div class="px-md py-md border-t border-dashed border-outline-variant">
+<p class="font-body-sm text-outline">Details for Multimedia session revealed here.</p>
+</div>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="border-b border-outline-variant last:border-0 group">
+<div class="grid grid-cols-12 gap-md px-md py-md items-center cursor-pointer hover:bg-surface-container-high transition-colors duration-200" onclick="toggleDetails('details-4')">
+<div class="col-span-4 flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="event">event</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Oct 17, 2023</span>
+<span class="font-label-md text-label-md text-outline">07:30 AM</span>
+</div>
+</div>
+<div class="col-span-3 font-body-md text-on-surface">ADSO-2559234</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-attendance-present h-full w-[100%]"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-attendance-present">100%</span>
+</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="material-symbols-outlined text-outline transition-transform duration-300" data-icon="expand_more" id="icon-details-4">expand_more</span>
+</div>
+</div>
+<div class="row-collapsed transition-all duration-300 ease-in-out bg-surface-container-lowest" id="details-4">
+<div class="px-md py-md border-t border-dashed border-outline-variant">
+<p class="font-body-sm text-outline">Perfect attendance session details.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Pagination -->
+<div class="p-md bg-surface-container-low flex justify-between items-center border-t border-outline-variant">
+<span class="font-label-md text-outline">Showing 4 of 24 records</span>
+<div class="flex gap-xs">
+<button class="w-touch-target h-touch-target rounded-full flex items-center justify-center border border-outline-variant text-outline hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-touch-target h-touch-target rounded-full flex items-center justify-center border border-outline-variant text-primary bg-primary-fixed hover:bg-primary-fixed-dim transition-colors">
+                            1
+                        </button>
+<button class="w-touch-target h-touch-target rounded-full flex items-center justify-center border border-outline-variant text-outline hover:bg-surface-container-high transition-colors">
+                            2
+                        </button>
+<button class="w-touch-target h-touch-target rounded-full flex items-center justify-center border border-outline-variant text-outline hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-sm py-xs h-touch-target bg-surface-container-lowest dark:bg-on-primary-fixed shadow-[0_-4px_12px_rgba(0,0,0,0.08)] z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-md py-xs hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-md py-xs hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Sessions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-md py-xs hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-md text-label-md">QR</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary-fixed rounded-full px-md py-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+</nav>
+<script>
+        function toggleDetails(id) {
+            const detailElement = document.getElementById(id);
+            const iconElement = document.getElementById('icon-' + id);
+            
+            if (detailElement.classList.contains('row-collapsed')) {
+                // Collapse all others first (optional for accordion behavior)
+                // document.querySelectorAll('.row-expanded').forEach(el => el.classList.replace('row-expanded', 'row-collapsed'));
+                
+                detailElement.classList.remove('row-collapsed');
+                detailElement.classList.add('row-expanded');
+                iconElement.style.transform = 'rotate(180deg)';
+            } else {
+                detailElement.classList.remove('row-expanded');
+                detailElement.classList.add('row-collapsed');
+                iconElement.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body></html>
