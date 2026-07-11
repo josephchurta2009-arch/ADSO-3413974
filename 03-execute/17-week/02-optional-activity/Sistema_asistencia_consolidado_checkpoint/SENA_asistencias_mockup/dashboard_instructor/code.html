@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SENA Attendance - Instructor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#6f7a69",
+                        "surface": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#dce2f7",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed-variant": "#404754",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-container": "#39a935",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed": "#002201",
+                        "primary": "#006e0d",
+                        "on-primary-fixed-variant": "#005307",
+                        "surface-bright": "#f8f9fa",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "on-surface": "#191c1d",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-container": "#003503",
+                        "tertiary": "#585f6c",
+                        "outline-variant": "#becab6",
+                        "surface-tint": "#006e0d",
+                        "primary-fixed": "#8bfc7c",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#6fde63",
+                        "primary-fixed-dim": "#6fde63",
+                        "tertiary-fixed": "#dce2f3",
+                        "secondary-container": "#d9dff5",
+                        "on-secondary-fixed": "#141b2b",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#5c6274",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#c0c7d6",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-container": "#262d39",
+                        "tertiary-container": "#8d94a3",
+                        "on-surface-variant": "#3f4a3b",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1d",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed": "#151c27",
+                        "secondary": "#575e70",
+                        "surface-container": "#edeeef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "16px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "sidebar-width": "260px",
+                        "sm": "12px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-lg h-16 bg-surface-container-lowest border-b border-surface-variant shadow-sm transition-all duration-200">
+<div class="flex items-center gap-4 w-sidebar-width shrink-0">
+<span class="font-headline-md text-headline-md font-bold text-primary truncate">SENA Attendance</span>
+</div>
+<div class="flex-1 flex justify-start items-center ml-4">
+<!-- Search bar on left -->
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border border-surface-variant rounded-full py-2 pl-10 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface transition-all placeholder:text-on-surface-variant" placeholder="Buscar..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-150 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors cursor-pointer active:scale-95 duration-150 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">help</span>
+</button>
+<button class="ml-2 w-8 h-8 rounded-full overflow-hidden border border-surface-variant cursor-pointer active:scale-95 duration-150">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Professional headshot portrait of a Colombian SENA instructor in a modern well-lit educational setting. The person is smiling gently, wearing business casual attire. Soft natural light, high-resolution photography, corporate institutional vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEfPDo07iaWlrmMqXA3mEwtskh5fyJLwiRMFdT5NvW0FKSPHRLjC1R0UtbC_62YyYoYqoCRVIS1W7uVe-WsV-FerVqGEHl3C06V1KpztJW_hn4P4lE8sWmXq0oB2xVIEdYtIJ94bQ51bWQ9wZtIq7uFzekn9_diEs7HbjJb3vmSAYnBP7xD_AJVGQmgW0HQLUqsktMD9bKlkRRsXAoVHFuHXy2VSAHr0T02wf7Y_mQB6UZSJmYnyyCR2hpwO3su3RnMvy7UKOlqQ"/>
+</button>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col w-[260px] h-screen fixed left-0 top-0 pt-16 bg-surface-container-low border-r border-surface-variant z-40 transition-all duration-200 ease-in-out">
+<div class="p-lg flex flex-col items-center justify-center border-b border-surface-variant">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border border-surface-variant flex items-center justify-center mb-3 shadow-[0_1px_3px_rgba(0,0,0,0.05)] overflow-hidden">
+<img alt="SENA Logo" class="w-12 h-12 object-contain" data-alt="Official SENA institution logo emblem. Clean graphic design featuring the classic orange and green elements on a pure white background. Crisp vector-style rendering, high contrast, professional educational branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQAg1ZmgbhyEmY6HJRZaQaW9m06Wf6b8KGZki_4rAOhLHq9npWhofaKzsiK7lI4Qt_wjnD0VTJHfWUIiDdNavreRhe8MjXJal4Kry6x-AZhwHVVEZxyo3jD1mvF8uG-e4lnYajVXLXtIhgIE3HbxjL4Tcm1XAX2ZeVS8eKz_GVvPfM1FYI-2tNCymO77VyHBPofvfysYVJhxy9vrou34PlveAl_YfhDMQgzYy0F_CXHyezJoDdNK3Gf42aLKZfggC8AoQi70AgVg"/>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">SENA</h2>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Attendance System</p>
+</div>
+<div class="flex-1 overflow-y-auto py-md flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface font-bold border-l-4 border-primary bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined fill-icon text-primary">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out ml-1 border-l-[3px] border-transparent" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">My Groups</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out ml-1 border-l-[3px] border-transparent" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out ml-1 border-l-[3px] border-transparent" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out ml-1 border-l-[3px] border-transparent" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="p-3 border-t border-surface-variant mt-auto">
+<button class="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-sidebar-width pt-16 min-h-screen pb-24 md:pb-lg flex flex-col">
+<div class="flex-1 w-full max-w-container-max mx-auto p-4 md:p-lg lg:p-gutter flex flex-col gap-lg">
+<!-- Dashboard Header & Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Instructor Dashboard</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Resumen de actividad para hoy</p>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<div class="relative w-full sm:w-auto">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">calendar_today</span>
+<input class="w-full sm:w-auto bg-surface-container-lowest border border-surface-variant rounded-lg py-2 pl-10 pr-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md text-on-surface cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.03)]" type="date" value="2023-10-24"/>
+</div>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-lg hover:brightness-95 active:scale-95 transition-all shadow-sm flex items-center gap-2 shrink-0">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+                        Iniciar asistencia
+                    </button>
+</div>
+</div>
+<!-- Stats Grid (Bento style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-md">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] flex flex-col hover:-translate-y-0.5 transition-transform duration-200">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-on-surface-variant">Asistencias Hoy</p>
+<div class="w-8 h-8 rounded-full bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">fact_check</span>
+</div>
+</div>
+<p class="font-display-lg text-display-lg text-on-surface mb-1">124</p>
+<div class="flex items-center gap-1 mt-auto">
+<span class="material-symbols-outlined text-primary text-[14px]">trending_up</span>
+<span class="font-label-md text-[10px] text-primary font-medium">+12% vs ayer</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] flex flex-col hover:-translate-y-0.5 transition-transform duration-200">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-on-surface-variant">Aprendices Presentes</p>
+<div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">how_to_reg</span>
+</div>
+</div>
+<p class="font-display-lg text-display-lg text-on-surface mb-1">108</p>
+<div class="flex items-center gap-1 mt-auto">
+<span class="font-label-md text-[10px] text-on-surface-variant font-medium">De 115 programados</span>
+<div class="ml-auto w-16 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[94%]"></div>
+</div>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] flex flex-col hover:-translate-y-0.5 transition-transform duration-200 relative overflow-hidden">
+<div class="absolute right-0 bottom-0 w-16 h-16 bg-error-container/20 rounded-tl-full -mr-4 -mb-4"></div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant">Ausentes</p>
+<div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-600 text-[18px]">person_off</span>
+</div>
+</div>
+<p class="font-display-lg text-display-lg text-on-surface mb-1 relative z-10">7</p>
+<div class="flex items-center gap-1 mt-auto relative z-10">
+<span class="font-label-md text-[10px] text-error font-medium">Requiere atención</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] flex flex-col hover:-translate-y-0.5 transition-transform duration-200">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-on-surface-variant">Justificaciones Pendientes</p>
+<div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-600 text-[18px]">pending_actions</span>
+</div>
+</div>
+<p class="font-display-lg text-display-lg text-on-surface mb-1">3</p>
+<button class="mt-auto font-label-md text-[11px] text-primary font-medium flex items-center gap-1 hover:underline w-fit">
+                        Revisar ahora
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Sessions Table Section -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col">
+<div class="p-md border-b border-surface-variant flex justify-between items-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sesiones del Día</h3>
+<button class="p-1.5 rounded hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-surface-variant">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold">Estado</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold">Hora</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold">Ficha</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold">Programa</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-semibold text-right">Acción</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Row 1 (Active) -->
+<tr class="border-b border-surface-variant bg-primary-container/5 hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 font-label-md text-[11px] font-medium whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        En curso
+                                    </span>
+</td>
+<td class="py-3 px-4 font-medium">08:00 AM - 10:00 AM</td>
+<td class="py-3 px-4">
+<span class="font-mono text-sm bg-surface-container py-0.5 px-2 rounded border border-surface-variant">2556789</span>
+</td>
+<td class="py-3 px-4">
+<p class="font-medium truncate max-w-[200px] sm:max-w-xs" title="ADSO - Análisis y Desarrollo de Software">ADSO - Análisis y Desarrollo de Software</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Ambiente 402 - Torre B</p>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="bg-primary text-on-primary font-label-md text-[11px] px-3 py-1.5 rounded hover:bg-primary/90 transition-colors">Ver lista</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-[11px] font-medium whitespace-nowrap">
+                                        Completada
+                                    </span>
+</td>
+<td class="py-3 px-4">06:00 AM - 08:00 AM</td>
+<td class="py-3 px-4">
+<span class="font-mono text-sm bg-surface-container py-0.5 px-2 rounded border border-surface-variant">2556780</span>
+</td>
+<td class="py-3 px-4">
+<p class="truncate max-w-[200px] sm:max-w-xs" title="Mantenimiento de Equipos de Cómputo">Mantenimiento de Equipos de Cómputo</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Ambiente 305 - Torre A</p>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary font-label-md text-[11px] px-3 py-1.5 rounded border border-surface-variant bg-surface hover:border-primary transition-colors">Reporte</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-label-md text-[11px] font-medium whitespace-nowrap">
+                                        Próxima
+                                    </span>
+</td>
+<td class="py-3 px-4">10:30 AM - 12:30 PM</td>
+<td class="py-3 px-4">
+<span class="font-mono text-sm bg-surface-container py-0.5 px-2 rounded border border-surface-variant">2556812</span>
+</td>
+<td class="py-3 px-4">
+<p class="truncate max-w-[200px] sm:max-w-xs" title="Sistemas de Información Geográfica">Sistemas de Información Geográfica</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Laboratorio SIG - Torre C</p>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant opacity-50 cursor-not-allowed font-label-md text-[11px] px-3 py-1.5 rounded border border-surface-variant bg-surface" disabled="">Iniciar</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest rounded-t-xl shadow-[0_-1px_3px_rgba(0,0,0,0.05),0_-4px_6px_-2px_rgba(0,0,0,0.02)] border-t border-surface-variant">
+<button class="flex flex-col items-center justify-center text-primary font-bold bg-primary-container/10 rounded-xl px-4 py-1.5 scale-95 duration-100 active:bg-surface-variant/50">
+<span class="material-symbols-outlined fill-icon mb-1">home</span>
+<span class="font-label-md-mobile text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 scale-95 duration-100 active:bg-surface-variant/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1">qr_code_scanner</span>
+<span class="font-label-md-mobile text-[10px]">Scan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 scale-95 duration-100 active:bg-surface-variant/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1">history</span>
+<span class="font-label-md-mobile text-[10px]">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1.5 scale-95 duration-100 active:bg-surface-variant/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-md-mobile text-[10px]">Profile</span>
+</button>
+</nav>
+<!-- Mobile Spacer for BottomNav -->
+<div class="h-16 md:hidden"></div>
+</body></html>

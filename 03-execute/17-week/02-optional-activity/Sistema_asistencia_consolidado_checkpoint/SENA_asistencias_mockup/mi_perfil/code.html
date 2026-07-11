@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SENA Attendance - Perfil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#6f7a69",
+                      "surface": "#f8f9fa",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#dce2f7",
+                      "surface-dim": "#d9dadb",
+                      "on-tertiary-fixed-variant": "#404754",
+                      "inverse-on-surface": "#f0f1f2",
+                      "primary-container": "#39a935",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#e1e3e4",
+                      "on-primary-fixed": "#002201",
+                      "primary": "#006e0d",
+                      "on-primary-fixed-variant": "#005307",
+                      "surface-bright": "#f8f9fa",
+                      "secondary-fixed-dim": "#c0c6db",
+                      "on-surface": "#191c1d",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary-container": "#003503",
+                      "tertiary": "#585f6c",
+                      "outline-variant": "#becab6",
+                      "surface-tint": "#006e0d",
+                      "primary-fixed": "#8bfc7c",
+                      "on-secondary-fixed-variant": "#404758",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#6fde63",
+                      "primary-fixed-dim": "#6fde63",
+                      "tertiary-fixed": "#dce2f3",
+                      "secondary-container": "#d9dff5",
+                      "on-secondary-fixed": "#141b2b",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#5c6274",
+                      "background": "#f8f9fa",
+                      "tertiary-fixed-dim": "#c0c7d6",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-tertiary-container": "#262d39",
+                      "tertiary-container": "#8d94a3",
+                      "on-surface-variant": "#3f4a3b",
+                      "inverse-surface": "#2e3132",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1d",
+                      "surface-container-low": "#f3f4f5",
+                      "on-tertiary-fixed": "#151c27",
+                      "secondary": "#575e70",
+                      "surface-container": "#edeeef"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "md": "16px",
+                      "container-max": "1440px",
+                      "xl": "32px",
+                      "base": "4px",
+                      "lg": "24px",
+                      "sidebar-width": "260px",
+                      "sm": "12px",
+                      "xs": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .material-symbols-outlined {
+              font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          }
+          
+          /* Utility to hide/show tabs */
+          .tab-content { display: none; }
+          .tab-content.active { display: block; }
+          
+          /* Custom input focus states based on Brand Guidelines */
+          input:focus, select:focus, textarea:focus {
+              outline: none !important;
+              border-color: #39A935 !important;
+              box-shadow: 0 0 0 2px rgba(57, 169, 53, 0.2) !important;
+          }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md font-sans antialiased">
+<!-- TopNavBar (Web) -->
+<header class="hidden md:flex fixed top-0 left-0 right-0 z-50 items-center justify-between px-lg h-16 bg-surface-container-lowest border-b border-surface-variant shadow-sm w-full">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">SENA Attendance</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 border border-surface-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a user in a well-lit studio environment, subtle corporate background, bright and modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSygdToWF56rF3s-IEChN-krPIh7lXFAhqBMee5fekju1fVJ13U0hKxEpr98vcIEZ8eHN0zayUTiadB0t99J0tuguriV4OIuiJVwC7-jrbcPNe2Va99QRiibcNCwdn7u8jfRGM__jVQWq8D-pZsPsUxo20s2_xTPzS7mgBsytwUWbEHqnlh8DrDA-7oXU4IrZeThCMgEF8LfZOTLQlN4twQQo5q0v5daxJ0bUXGuTV5Pc6Gj8ykhUIK11Mqum-dabwLiI3GCKwJA"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Web) -->
+<nav class="hidden md:flex flex-col w-[260px] h-screen fixed left-0 top-0 pt-16 bg-surface-container-low border-r border-surface-variant">
+<div class="p-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0 border border-surface-variant shadow-sm">
+<img alt="SENA Logo" class="w-full h-full object-cover" data-alt="A clean, minimalist logo mark featuring abstract geometric shapes in institutional green, bright white background, corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASEeBkiupr5Ufck93_0_vU975_QO2x9sdkNeLqQGJPpLkGafJd0Pt4bi2paT0hcIbvNoXhvi-s4P_V3U4mrkzCTb6of9MQ-o23IEOrZrRe0xgSbK3lI5XmYxJd8Ots-27d-SGRRMxd827VQ2Pm7wecwnjxSp270zn97W9Jz4dcI5JbFp-9Q60clA8OFZ7QFtxcs2nyTXJDVY7f2TteUEhxArUXjnXdh1y_8H2dQ8ul49NmlKC1zwGoUqyE2WQk4UwN9wFhJUxL1Q"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">SENA</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Attendance System</p>
+</div>
+</div>
+</div>
+<ul class="flex-1 px-3 mt-4 space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+                    My Groups
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-lg">fact_check</span>
+                    Attendance
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface font-bold border-l-4 border-primary bg-surface-container-high transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="p-4 mt-auto border-t border-surface-variant">
+<button class="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">logout</span>
+                Logout
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="md:ml-[260px] pt-16 md:pt-24 pb-24 md:pb-12 min-h-screen">
+<div class="max-w-4xl mx-auto px-4 md:px-lg">
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="font-display-lg text-display-lg text-on-surface">Perfil de Usuario</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Gestiona tu información personal y configuración de seguridad.</p>
+</div>
+<!-- Profile Overview Card (Bento Style) -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_1px_2px_rgba(0,0,0,0.03)] p-6 mb-8 flex flex-col md:flex-row items-center md:items-start gap-6">
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-surface shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A high-quality, professional headshot of a user smiling slightly, soft natural lighting, modern office background slightly blurred, vibrant and crisp aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQQ6y5N_EnG2cxrtANomqimFR4RGtWv5v28pq-lU2MDOQNWKIor6M8KUyDeBkuep0WR6OymiVII9g3nmJ0gmxvPHa81lK9wkeuuUMPXlqpVSfdFwS-hm_tzOh8bBISvBtZgWfOdMyDzaA-gHVw0TFvpqdBlsr6Zc8gpicU3AKtevjcg8syj6iq_4QTZDOqT-bWheDhFKrPGh4yLduxIuouIMS7keKEFUAvjiWXjYZYEvFGI7emJuFVrqpNc4s0fmw9aIv6pzVCfA"/>
+</div>
+<button class="absolute bottom-2 right-2 p-2 bg-primary-container text-on-primary rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-primary-fixed-dim">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="flex-1 text-center md:text-left pt-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Juan Carlos Rodriguez</h2>
+<p class="font-body-lg text-body-lg text-primary font-medium mb-4">Instructor SENA</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md border border-surface-variant">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+                            jrodriguez@sena.edu.co
+                        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md border border-surface-variant">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+                            CC 1234567890
+                        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-primary-container font-label-md text-label-md border border-emerald-100">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                            Cuenta Activa
+                        </span>
+</div>
+</div>
+<div class="mt-4 md:mt-0 flex gap-3 w-full md:w-auto justify-center">
+<button class="px-4 py-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-medium shadow-sm hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                        Editar perfil
+                    </button>
+</div>
+</div>
+<!-- Tab Navigation -->
+<div class="border-b border-surface-variant mb-6">
+<nav aria-label="Tabs" class="flex gap-6 -mb-px">
+<button class="tab-btn font-label-md text-label-md pb-4 px-1 border-b-2 border-primary text-primary font-semibold transition-colors flex items-center gap-2" id="tab-info" onclick="switchTab('info')">
+<span class="material-symbols-outlined text-[18px]">person</span>
+                        Información
+                    </button>
+<button class="tab-btn font-label-md text-label-md pb-4 px-1 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-surface-dim font-medium transition-colors flex items-center gap-2" id="tab-security" onclick="switchTab('security')">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+                        Seguridad
+                    </button>
+<button class="tab-btn font-label-md text-label-md pb-4 px-1 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-surface-dim font-medium transition-colors flex items-center gap-2" id="tab-notifications" onclick="switchTab('notifications')">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+                        Notificaciones
+                    </button>
+</nav>
+</div>
+<!-- Tab Contents -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_1px_2px_rgba(0,0,0,0.03)] overflow-hidden">
+<!-- Tab: Información -->
+<div class="tab-content active p-6 md:p-8" id="content-info">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 border-b border-surface-variant pb-3">Información Personal</h3>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Nombre Completo</label>
+<input class="w-full bg-surface-container-low border border-surface-variant rounded-lg px-4 py-2.5 text-on-surface font-body-md text-body-md disabled:opacity-70 disabled:cursor-not-allowed" disabled="" type="text" value="Juan Carlos Rodriguez"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Correo Electrónico</label>
+<input class="w-full bg-surface-container-low border border-surface-variant rounded-lg px-4 py-2.5 text-on-surface font-body-md text-body-md disabled:opacity-70 disabled:cursor-not-allowed" disabled="" type="email" value="jrodriguez@sena.edu.co"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Rol Asignado</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-surface-variant rounded-lg px-4 py-2.5 text-on-surface font-body-md text-body-md appearance-none disabled:opacity-70 disabled:cursor-not-allowed" disabled="">
+<option>Instructor</option>
+<option>Administrador</option>
+<option>Aprendiz</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Ficha Principal</label>
+<input class="w-full bg-surface-container-low border border-surface-variant rounded-lg px-4 py-2.5 text-on-surface font-body-md text-body-md disabled:opacity-70 disabled:cursor-not-allowed" disabled="" type="text" value="2558990 - ADSO"/>
+</div>
+<div class="md:col-span-2 pt-4 flex justify-end gap-3 border-t border-surface-variant mt-4 hidden" id="edit-actions">
+<button class="px-4 py-2 bg-surface text-on-surface border border-surface-variant rounded-lg font-label-md text-label-md font-medium hover:bg-surface-container transition-colors" type="button">Cancelar</button>
+<button class="px-4 py-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-medium hover:opacity-90 transition-opacity" type="button">Guardar Cambios</button>
+</div>
+</form>
+</div>
+<!-- Tab: Seguridad -->
+<div class="tab-content p-6 md:p-8" id="content-security">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Seguridad de la Cuenta</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 pb-4 border-b border-surface-variant">Actualiza tu contraseña para mantener tu cuenta segura.</p>
+<div class="max-w-md">
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Contraseña Actual</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-2.5 text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-shadow pr-10" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Nueva Contraseña</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-2.5 text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-shadow pr-10" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Mínimo 8 caracteres, incluir números y símbolos especiales.</p>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Confirmar Nueva Contraseña</label>
+<input class="w-full bg-surface-container-lowest border border-surface-variant rounded-lg px-4 py-2.5 text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-shadow" type="password"/>
+</div>
+<div class="pt-4 flex justify-start gap-3">
+<button class="px-5 py-2.5 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-medium shadow-sm hover:opacity-90 transition-opacity" type="button">Cambiar contraseña</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Tab: Notificaciones -->
+<div class="tab-content p-6 md:p-8" id="content-notifications">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 border-b border-surface-variant pb-3">Preferencias de Notificación</h3>
+<div class="space-y-6 max-w-2xl">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-surface-variant">
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-on-surface mb-1">Alertas de Asistencia</h4>
+<p class="font-body-sm text-sm text-on-surface-variant">Recibir correos cuando se registre una inasistencia en tus fichas.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-surface-variant">
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-on-surface mb-1">Resumen Semanal</h4>
+<p class="font-body-sm text-sm text-on-surface-variant">Recibir un reporte consolidado de asistencia cada viernes.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest rounded-t-xl shadow-[0_-1px_3px_rgba(0,0,0,0.05)] border-t border-surface-variant">
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-label-md-mobile text-label-md-mobile w-16 py-1 active:bg-surface-variant/50 rounded-lg scale-95 duration-100 transition-all">
+<span class="material-symbols-outlined mb-1">home</span>
+            Home
+        </button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-label-md-mobile text-label-md-mobile w-16 py-1 active:bg-surface-variant/50 rounded-lg scale-95 duration-100 transition-all">
+<span class="material-symbols-outlined mb-1">qr_code_scanner</span>
+            Scan
+        </button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-label-md-mobile text-label-md-mobile w-16 py-1 active:bg-surface-variant/50 rounded-lg scale-95 duration-100 transition-all">
+<span class="material-symbols-outlined mb-1">history</span>
+            History
+        </button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold bg-primary-container/10 rounded-xl px-4 py-1 font-label-md-mobile text-label-md-mobile scale-95 duration-100 transition-all">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+            Profile
+        </button>
+</nav>
+<script>
+        // Simple tab switching logic
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Reset all tabs styles
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('border-primary', 'text-primary', 'font-semibold');
+                el.classList.add('border-transparent', 'text-on-surface-variant', 'font-medium');
+            });
+            
+            // Show selected content
+            document.getElementById(`content-${tabId}`).classList.add('active');
+            
+            // Style selected tab
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            activeTab.classList.remove('border-transparent', 'text-on-surface-variant', 'font-medium');
+            activeTab.classList.add('border-primary', 'text-primary', 'font-semibold');
+        }
+    </script>
+</body></html>

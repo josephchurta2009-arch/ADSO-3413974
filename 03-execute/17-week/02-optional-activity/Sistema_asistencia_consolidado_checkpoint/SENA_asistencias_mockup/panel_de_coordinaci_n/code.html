@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard Coordinador - SENA Attendance</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#6f7a69",
+                      "surface": "#f8f9fa",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#dce2f7",
+                      "surface-dim": "#d9dadb",
+                      "on-tertiary-fixed-variant": "#404754",
+                      "inverse-on-surface": "#f0f1f2",
+                      "primary-container": "#39a935",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#e1e3e4",
+                      "on-primary-fixed": "#002201",
+                      "primary": "#006e0d",
+                      "on-primary-fixed-variant": "#005307",
+                      "surface-bright": "#f8f9fa",
+                      "secondary-fixed-dim": "#c0c6db",
+                      "on-surface": "#191c1d",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary-container": "#003503",
+                      "tertiary": "#585f6c",
+                      "outline-variant": "#becab6",
+                      "surface-tint": "#006e0d",
+                      "primary-fixed": "#8bfc7c",
+                      "on-secondary-fixed-variant": "#404758",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#6fde63",
+                      "primary-fixed-dim": "#6fde63",
+                      "tertiary-fixed": "#dce2f3",
+                      "secondary-container": "#d9dff5",
+                      "on-secondary-fixed": "#141b2b",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#5c6274",
+                      "background": "#f8f9fa",
+                      "tertiary-fixed-dim": "#c0c7d6",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-tertiary-container": "#262d39",
+                      "tertiary-container": "#8d94a3",
+                      "on-surface-variant": "#3f4a3b",
+                      "inverse-surface": "#2e3132",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1d",
+                      "surface-container-low": "#f3f4f5",
+                      "on-tertiary-fixed": "#151c27",
+                      "secondary": "#575e70",
+                      "surface-container": "#edeeef"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "md": "16px",
+                      "container-max": "1440px",
+                      "xl": "32px",
+                      "base": "4px",
+                      "lg": "24px",
+                      "sidebar-width": "260px",
+                      "sm": "12px",
+                      "xs": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex">
+<!-- SideNavBar (Web) -->
+<nav class="hidden md:flex flex-col w-[260px] h-screen fixed left-0 top-0 pt-16 bg-surface-container-low dark:bg-surface-container-low border-r border-surface-variant dark:border-outline-variant transition-all duration-200 ease-in-out z-40">
+<div class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1 px-4">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface font-bold border-l-4 border-primary bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-primary">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span>
+                        My Groups
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+                        Attendance
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                        Reports
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </a>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-surface-variant">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-lg h-16 bg-surface-container-lowest border-b border-surface-variant dark:border-outline-variant shadow-sm docked full-width top-0">
+<div class="flex items-center gap-4">
+<div class="md:hidden">
+<button class="p-2 text-on-surface-variant cursor-pointer active:scale-95 duration-150 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-weight="fill">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">SENA Attendance</h1>
+</div>
+</div>
+</div>
+<div class="flex-1 max-w-md mx-8 hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-surface-variant rounded-full font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-on-surface placeholder:text-on-surface-variant" placeholder="Buscar fichas, aprendices..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant cursor-pointer active:scale-95 duration-150 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant cursor-pointer active:scale-95 duration-150 rounded-full hover:bg-surface-container-low transition-colors hidden sm:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full ml-2 overflow-hidden border border-surface-variant cursor-pointer active:scale-95 duration-150">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate administrator in a modern office environment. High-key lighting, modern corporate aesthetic. Clean background, sharp focus, professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfLAzxKnZLTzudswv1jiOaHNIewOdb9Z9VO6ya2aMEqv4APN6TDeEib2MG1TwmUAKYa8G_xqIdHs6PrKggHAprS3onvS8HKW1CWHSF3-ai6yzHcF38WJwXeJarAMhEqEfdyCN3D-WL0m3cMk3KH6JM4q-zhj-V9cQhIduCq0c5Ied_bagOV4MJQ-XyDSuxIpgHh0I4ovCyBnFlgn-TBab-8e1fJ7ZUi6eaGNjsJoMawwJTF5GIt6K5wt5trdhBNZLfdGBY0HnuxA"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 md:ml-[260px] pt-16 min-h-screen">
+<div class="max-w-container-max mx-auto p-4 md:p-gutter">
+<div class="mb-8">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Panel de Coordinación</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Vista general de asistencia y alertas prioritarias.</p>
+</div>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Stat 1: Justificaciones Pendientes -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-6 shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_1px_2px_rgba(0,0,0,0.03)] flex flex-col justify-between h-full hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08),_0px_4px_6px_-2px_rgba(0,0,0,0.04)] transition-shadow duration-200">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Justificaciones Pendientes</h3>
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">assignment_late</span>
+</div>
+</div>
+<div class="flex items-end gap-3">
+<span class="font-display-lg text-display-lg text-on-surface">24</span>
+<span class="font-body-md text-body-md text-on-surface-variant mb-1">requieren revisión</span>
+</div>
+</div>
+<!-- Stat 2: Aprendices en Riesgo (Red Emphasis) -->
+<div class="bg-error-container/20 border border-error/20 rounded-xl p-6 shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_1px_2px_rgba(0,0,0,0.03)] flex flex-col justify-between h-full hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08),_0px_4px_6px_-2px_rgba(0,0,0,0.04)] transition-shadow duration-200 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-error/5 rounded-bl-full"></div>
+<div class="flex items-center justify-between mb-4 relative z-10">
+<h3 class="font-headline-md text-headline-md text-error">Aprendices en Riesgo</h3>
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-error-container">warning</span>
+</div>
+</div>
+<div class="flex items-end gap-3 relative z-10">
+<span class="font-display-lg text-display-lg text-error">12</span>
+<span class="font-body-md text-body-md text-error/80 mb-1">&gt;20% inasistencia</span>
+</div>
+</div>
+<!-- Stat 3: Faltas Acumuladas -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-6 shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_1px_2px_rgba(0,0,0,0.03)] flex flex-col justify-between h-full hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08),_0px_4px_6px_-2px_rgba(0,0,0,0.04)] transition-shadow duration-200">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Faltas Acumuladas</h3>
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">calendar_today</span>
+</div>
+</div>
+<div class="flex items-end gap-3">
+<span class="font-display-lg text-display-lg text-on-surface">156</span>
+<span class="font-body-md text-body-md text-on-surface-variant mb-1">esta semana</span>
+</div>
+</div>
+</div>
+<!-- Chart and Actions Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Chart: Inasistencias por Ficha -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-surface-variant rounded-xl p-6 shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_1px_2px_rgba(0,0,0,0.03)]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Inasistencias por Ficha</h3>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                            Ver reporte completo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Simplified CSS Bar Chart Representation -->
+<div class="h-64 flex items-end gap-4 pb-6 border-b border-surface-variant mt-8 relative">
+<!-- Y-axis labels -->
+<div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-on-surface-variant font-label-md text-label-md text-xs w-8 text-right pr-2">
+<span>40</span>
+<span>30</span>
+<span>20</span>
+<span>10</span>
+<span>0</span>
+</div>
+<div class="ml-10 flex-1 flex items-end justify-around h-full">
+<!-- Bar 1 -->
+<div class="w-12 flex flex-col items-center group cursor-pointer">
+<div class="w-full bg-surface-variant rounded-t-sm h-[60%] relative group-hover:bg-primary-container/80 transition-colors">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-md text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 shadow-lg pointer-events-none">24 Faltas</div>
+</div>
+<span class="mt-2 text-on-surface-variant font-label-md text-xs rotate-45 origin-left whitespace-nowrap">2789012</span>
+</div>
+<!-- Bar 2 -->
+<div class="w-12 flex flex-col items-center group cursor-pointer">
+<div class="w-full bg-primary-container rounded-t-sm h-[85%] relative hover:brightness-110 transition-all">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-md text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 shadow-lg pointer-events-none">34 Faltas</div>
+</div>
+<span class="mt-2 text-on-surface-variant font-label-md text-xs rotate-45 origin-left whitespace-nowrap font-bold">2789015</span>
+</div>
+<!-- Bar 3 -->
+<div class="w-12 flex flex-col items-center group cursor-pointer">
+<div class="w-full bg-surface-variant rounded-t-sm h-[40%] relative group-hover:bg-primary-container/80 transition-colors">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-md text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 shadow-lg pointer-events-none">16 Faltas</div>
+</div>
+<span class="mt-2 text-on-surface-variant font-label-md text-xs rotate-45 origin-left whitespace-nowrap">2789020</span>
+</div>
+<!-- Bar 4 -->
+<div class="w-12 flex flex-col items-center group cursor-pointer">
+<div class="w-full bg-surface-variant rounded-t-sm h-[20%] relative group-hover:bg-primary-container/80 transition-colors">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-md text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 shadow-lg pointer-events-none">8 Faltas</div>
+</div>
+<span class="mt-2 text-on-surface-variant font-label-md text-xs rotate-45 origin-left whitespace-nowrap">2789025</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Table: Recent items -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),_0px_1px_2px_rgba(0,0,0,0.03)] flex flex-col h-full overflow-hidden">
+<div class="p-4 border-b border-surface-variant flex justify-between items-center bg-surface-container-lowest">
+<h3 class="font-headline-md text-headline-md text-on-surface">Acciones Requeridas</h3>
+</div>
+<div class="overflow-y-auto flex-1">
+<!-- Item 1 -->
+<div class="p-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Carlos Arturo Gómez</h4>
+<p class="font-body-md text-xs text-on-surface-variant">Ficha 2789015 • Falta Médica</p>
+</div>
+<span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-label-md border border-blue-200">Justificación</span>
+</div>
+<div class="flex gap-2 mt-3">
+<button class="flex-1 bg-primary-container hover:bg-primary-container/90 text-white font-label-md text-label-md py-1.5 px-3 rounded shadow-sm transition-colors text-center">
+                                    Aprobar
+                                </button>
+<button class="flex-1 bg-surface-container-lowest border border-surface-variant hover:bg-surface-variant/50 text-on-surface font-label-md text-label-md py-1.5 px-3 rounded shadow-sm transition-colors text-center">
+                                    Rechazar
+                                </button>
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container-lowest border border-surface-variant hover:bg-surface-variant/50 text-on-surface-variant rounded shadow-sm transition-colors" title="Ver evidencia">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-body-md font-bold text-on-surface">María José Restrepo</h4>
+<p class="font-body-md text-xs text-on-surface-variant">Ficha 2789012 • Calamidad Familiar</p>
+</div>
+<span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-label-md border border-blue-200">Justificación</span>
+</div>
+<div class="flex gap-2 mt-3">
+<button class="flex-1 bg-primary-container hover:bg-primary-container/90 text-white font-label-md text-label-md py-1.5 px-3 rounded shadow-sm transition-colors text-center">
+                                    Aprobar
+                                </button>
+<button class="flex-1 bg-surface-container-lowest border border-surface-variant hover:bg-surface-variant/50 text-on-surface font-label-md text-label-md py-1.5 px-3 rounded shadow-sm transition-colors text-center">
+                                    Rechazar
+                                </button>
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container-lowest border border-surface-variant hover:bg-surface-variant/50 text-on-surface-variant rounded shadow-sm transition-colors" title="Ver evidencia">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Luis Felipe Sánchez</h4>
+<p class="font-body-md text-xs text-on-surface-variant">Ficha 2789015 • Problemas Transporte</p>
+</div>
+<span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-[10px] font-label-md border border-blue-200">Justificación</span>
+</div>
+<div class="flex gap-2 mt-3">
+<button class="flex-1 bg-primary-container hover:bg-primary-container/90 text-white font-label-md text-label-md py-1.5 px-3 rounded shadow-sm transition-colors text-center">
+                                    Aprobar
+                                </button>
+<button class="flex-1 bg-surface-container-lowest border border-surface-variant hover:bg-surface-variant/50 text-on-surface font-label-md text-label-md py-1.5 px-3 rounded shadow-sm transition-colors text-center">
+                                    Rechazar
+                                </button>
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container-lowest border border-surface-variant hover:bg-surface-variant/50 text-on-surface-variant rounded shadow-sm transition-colors" title="Ver evidencia">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest shadow-[0_-1px_3px_rgba(0,0,0,0.05)] shadow-lg rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold bg-primary-container/10 rounded-xl px-4 py-1 scale-95 duration-100">
+<span class="material-symbols-outlined text-xl mb-1">home</span>
+<span class="font-label-md-mobile text-label-md-mobile">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant scale-95 duration-100 active:bg-surface-variant/50 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined text-xl mb-1">qr_code_scanner</span>
+<span class="font-label-md-mobile text-label-md-mobile">Scan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant scale-95 duration-100 active:bg-surface-variant/50 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined text-xl mb-1">history</span>
+<span class="font-label-md-mobile text-label-md-mobile">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant scale-95 duration-100 active:bg-surface-variant/50 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined text-xl mb-1">person</span>
+<span class="font-label-md-mobile text-label-md-mobile">Profile</span>
+</button>
+</nav>
+</body></html>

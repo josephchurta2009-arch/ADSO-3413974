@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SENA Attendance - Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#6f7a69",
+                        "surface": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#dce2f7",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed-variant": "#404754",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-container": "#39a935",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed": "#002201",
+                        "primary": "#006e0d",
+                        "on-primary-fixed-variant": "#005307",
+                        "surface-bright": "#f8f9fa",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "on-surface": "#191c1d",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-container": "#003503",
+                        "tertiary": "#585f6c",
+                        "outline-variant": "#becab6",
+                        "surface-tint": "#006e0d",
+                        "primary-fixed": "#8bfc7c",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#6fde63",
+                        "primary-fixed-dim": "#6fde63",
+                        "tertiary-fixed": "#dce2f3",
+                        "secondary-container": "#d9dff5",
+                        "on-secondary-fixed": "#141b2b",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#5c6274",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#c0c7d6",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-container": "#262d39",
+                        "tertiary-container": "#8d94a3",
+                        "on-surface-variant": "#3f4a3b",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1d",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed": "#151c27",
+                        "secondary": "#575e70",
+                        "surface-container": "#edeeef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "16px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "sidebar-width": "260px",
+                        "sm": "12px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-active {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 169, 53, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(57, 169, 53, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 169, 53, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col w-[260px] h-screen fixed left-0 top-0 pt-16 bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary-fixed border-r border-surface-variant dark:border-outline-variant z-40">
+<div class="p-lg pb-xl border-b border-surface-variant flex items-center space-x-sm">
+<img alt="SENA Logo" class="w-10 h-10 rounded-lg object-cover" data-alt="A clean, modern corporate logo for SENA, set against a pristine white background. The logo features vibrant green and subtle gray tones, illuminated by soft studio lighting. The design communicates institutional trust and professionalism, maintaining a high-key, minimalist aesthetic suitable for an educational platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEYZ1yyWI-MnFgsNkYBWM677-xz0nMeky9bb9rynJrMlqsV95PfFCHTOXpjuWN_tU1jLhRs7fDrxp3l7Tp8n9xvhyKYrZOEyq5DmTgtEZ9BZXvKNZAYRuWy3mNfywqvvInT3y8Vb4-OXUA0CT_yXUhkP0Qmm7JQRsu_c0UfBgWMG_xPv7xIbahjsoTboofaQnlwO-G0R_-7rbOzGWEsiXjgH4CdEg8tWyKAvp42BDZ9O67MYLXuf9XELjek7mFMxSmxZtj80bp2w"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SENA</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Attendance System</p>
+</div>
+</div>
+<div class="flex-1 py-md overflow-y-auto">
+<a class="flex items-center px-lg py-sm text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-sm">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-sm">group</span>
+<span class="font-label-md text-label-md">My Groups</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface font-bold border-l-4 border-primary bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-sm" data-weight="fill" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-sm">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center px-lg py-sm text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-sm">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="p-md border-t border-surface-variant">
+<a class="flex items-center px-lg py-sm text-on-surface-variant font-medium hover:bg-surface-container dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-sm">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:pl-[260px] h-screen bg-surface overflow-hidden relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-lg h-16 bg-surface-container-lowest dark:bg-surface-container-lowest border-b border-surface-variant dark:border-outline-variant shadow-sm md:pl-[284px]">
+<div class="flex items-center space-x-sm md:hidden">
+<span class="material-symbols-outlined text-on-surface cursor-pointer">menu</span>
+<h1 class="font-headline-md-mobile text-headline-md-mobile font-bold text-primary dark:text-primary-fixed">SENA Attendance</h1>
+</div>
+<div class="hidden md:flex flex-1 max-w-md bg-surface-container-low rounded-full px-4 py-2 items-center border border-surface-variant focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none outline-none w-full text-body-md font-body-md text-on-surface placeholder-on-surface-variant focus:ring-0 p-0" placeholder="Search students, groups..." type="text"/>
+</div>
+<div class="flex items-center space-x-md ml-auto">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors hidden md:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-surface-variant object-cover cursor-pointer" data-alt="A professional headshot of a teacher or instructor against a clean, softly lit white background. The subject is well-groomed, wearing business casual attire suitable for a modern educational environment. The lighting is high-key and flattering, emphasizing approachability and competence within a corporate UI context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_QX_UiQ_JxxROcT_u1ALlWP4xx1Nz_iok6K96Wpn4rpmkNw7rtrq3MbMF-tVm4gdhjAT7nfKBceq_xbreoivs3KULKRgHjABv7YRtBjEQ-MhJHOZmZ2dwYWqUz61t-qPS1lI_Sao1QZ8DwT6U8y6Ygq_fnNPSDea_6sabq-GOoxdyfHOelFsKWT7Ardc87yq9wq6ArI8gMOSyWhK3B45fJzhpu_T7jORPLCQ4lEnFgkogU1K4-X2MiHNQT1VJsmbkzfU0nlp9ag"/>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto pt-16 pb-20 md:pb-6 px-4 md:px-lg lg:px-xl">
+<div class="max-w-[1440px] mx-auto mt-lg">
+<!-- Session Header Context -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-md md:p-lg mb-lg flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<div class="flex items-center space-x-sm mb-xs">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-container/10 text-primary">
+                                ADSO
+                            </span>
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">calendar_today</span> Oct 24, 2023
+                            </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Ficha 2501000</h2>
+<div class="flex flex-wrap items-center text-body-md text-on-surface-variant gap-4">
+<span class="flex items-center"><span class="material-symbols-outlined text-[18px] mr-1">person</span> Instructor: Carlos Pérez</span>
+<span class="flex items-center"><span class="material-symbols-outlined text-[18px] mr-1">meeting_room</span> Ambiente: Lab 304</span>
+</div>
+</div>
+<div class="flex items-center space-x-sm">
+<button class="flex items-center justify-center px-4 py-2 border border-surface-variant rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px] mr-2">edit_document</span>
+                            Registrar manualmente
+                        </button>
+<button class="flex items-center justify-center px-4 py-2 border border-surface-variant rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm hidden sm:flex">
+<span class="material-symbols-outlined text-[18px] mr-2">upload_file</span>
+                            Carga masiva
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- QR Generation Panel -->
+<div class="lg:col-span-4 flex flex-col gap-lg">
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-lg flex flex-col items-center text-center relative overflow-hidden">
+<div class="absolute top-4 right-4 flex items-center space-x-2 bg-emerald-50 text-primary px-3 py-1 rounded-full border border-emerald-200">
+<div class="w-2 h-2 rounded-full bg-[#39A935] pulse-active"></div>
+<span class="font-label-md text-label-md font-bold">QR Activo</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 mt-4">Registro por QR</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Muestre este código a los aprendices para registro rápido.</p>
+<div class="bg-white p-4 rounded-xl border border-surface-variant shadow-sm mb-6 relative group cursor-pointer hover:shadow-md transition-shadow">
+<div class="w-48 h-48 bg-surface-container-low rounded-lg flex items-center justify-center border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-[64px] text-surface-dim">qr_code_2</span>
+</div>
+<div class="absolute inset-0 bg-black/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+<span class="material-symbols-outlined text-on-surface bg-white p-2 rounded-full shadow-sm">fullscreen</span>
+</div>
+</div>
+<div class="flex items-center space-x-2 text-headline-lg font-headline-lg font-bold text-on-surface mb-6">
+<span class="material-symbols-outlined text-primary">timer</span>
+<span>04:59</span>
+</div>
+<button class="w-full py-3 bg-[#39A935] text-white rounded-lg font-label-md text-label-md font-bold shadow-sm hover:bg-[#2d8a2a] transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined mr-2">refresh</span>
+                                Generar Nuevo QR
+                            </button>
+</div>
+<!-- Mini Stats Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0_1px_3px_rgba(0,0,0,0.05)] p-md flex items-center justify-between">
+<div class="text-center flex-1 border-r border-surface-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Presentes</p>
+<p class="font-headline-lg text-headline-lg font-bold text-[#39A935]">18</p>
+</div>
+<div class="text-center flex-1 border-r border-surface-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Ausentes</p>
+<p class="font-headline-lg text-headline-lg font-bold text-error">4</p>
+</div>
+<div class="text-center flex-1">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Total</p>
+<p class="font-headline-lg text-headline-lg font-bold text-on-surface">32</p>
+</div>
+</div>
+</div>
+<!-- Apprentice List Table -->
+<div class="lg:col-span-8">
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0_1px_3px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col h-full">
+<div class="p-md border-b border-surface-variant flex items-center justify-between bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface">Lista de Aprendices</h3>
+<div class="flex items-center space-x-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors border border-surface-variant">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors border border-surface-variant">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant bg-surface-container-low/50">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Aprendiz</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Documento</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Estado</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Hora</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium text-center">Notas</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-surface-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center space-x-3">
+<img alt="Student" class="w-8 h-8 rounded-full border border-surface-variant object-cover" data-alt="A small circular avatar portrait of a young male student in a bright educational setting. He has dark hair, a subtle smile, and wears a neutral casual shirt. Lighting is even and professional, capturing a modern corporate UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6Njsa80CYu18pQvJxiNVIWgy9kZoTSXwdXotItAbHisqL-kAIorMAhUNfRbQZbSm4xZN407G3sBZQVww5M6vys01Zh6FMaaboSOiSz4So62smRut-pYSDixU1kolOuesP_NTwuaw_QoPuFGYnd6yYe1l8RJBTnWNS9IvEHV2MZVHLExKauERzLgZrd-xp7VTkfmiPocUAGn3F-PaX9XgPouHRo4hs4jwczN3Y3c9p5QZ6V6i-ReQKC1_lyZFOJOmRk2dHdyo7og"/>
+<span class="font-medium text-on-surface">Gómez, Ana María</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">1.023.456.789</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-primary border border-emerald-100">
+                                                    Presente
+                                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">08:02 AM</td>
+<td class="py-3 px-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">add_notes</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-bright/30 hover:bg-surface-container-lowest/50 transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs border border-surface-variant">
+                                                        LR
+                                                    </div>
+<span class="font-medium text-on-surface">Ramírez, Luis Felipe</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">1.098.765.432</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100">
+                                                    Tarde
+                                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">08:15 AM</td>
+<td class="py-3 px-4 text-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant cursor-pointer hover:text-primary">description</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center space-x-3">
+<img alt="Student" class="w-8 h-8 rounded-full border border-surface-variant object-cover" data-alt="A small circular avatar portrait of a young female student with glasses, smiling slightly, against a clean white background. High-key lighting, maintaining a professional and unified look for an educational platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPaKKKIG88t0NPcc27S1ZE9E4XW7M7YO12tphrRDQ5AY3Jbpu4g0WvU_Jo01PTXq0EEy_urLo3t-BeA2S6U7zSDxn4CPFvhvSQhRRAzfwesB_JfiU26V3tpJR2vunzBLjnCOufuuctYQ0PLa3LtA4qRg9iMwOhmwUlP5IIDP4itGg1tBSrYzN7wel_I6fCaISIpwbqhiWgWL-ulbtvRmq3RH_aAS6uZv8yEW3L-Ns0B0CXLMrXrMRbKdvtte_8FNM-DLhBgniBVA"/>
+<span class="font-medium text-on-surface">Martínez, Sofía</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">1.122.334.455</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-error border border-red-100">
+                                                    Ausente
+                                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">--:--</td>
+<td class="py-3 px-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">add_notes</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-bright/30 hover:bg-surface-container-lowest/50 transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-xs border border-blue-100">
+                                                        JP
+                                                    </div>
+<span class="font-medium text-on-surface">Pérez, Juan Camilo</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">1.000.222.333</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+                                                    Justificado
+                                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">--:--</td>
+<td class="py-3 px-4 text-center">
+<span class="material-symbols-outlined text-[18px] text-blue-500 cursor-pointer" title="Excusa médica adjunta">attach_file</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center space-x-3">
+<img alt="Student" class="w-8 h-8 rounded-full border border-surface-variant object-cover" data-alt="A small circular avatar portrait of an adult male student with a neat beard, looking directly at the camera. Soft studio lighting on a neutral grey background to fit a cohesive, modern app UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5oGXPrk2t6BFMNYVTo5Go1_55Ab3Awje2c4I-yqmOAV2PnnmiSYN8f8isGYG3LXzPN42ELs_pT1YO9q5l7KPf-ZZHZm5G3Jb0qiSfMmjBlYrYuT5EVkxlT2ZeM34fBliMNUIneBaoq3P4VpnJM-URj2siMCJ5hODDzaV8gvUhJRA4EPU5XLoUzIH_eDKNheocAPHFOEp6MYVDtu8ivqkGmZHDhcbrW8uUv7ZrZLnpsJkJAwdzXgQ0a_MmrC81bvA_Usyup_Zw4w"/>
+<span class="font-medium text-on-surface">López, Carlos Alberto</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">79.888.999</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container-highest text-on-surface-variant border border-surface-variant">
+                                                    Pendiente
+                                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">--:--</td>
+<td class="py-3 px-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">add_notes</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-surface-variant bg-surface-bright flex items-center justify-between mt-auto">
+<span class="font-body-md text-sm text-on-surface-variant">Mostrando 5 de 32 aprendices</span>
+<div class="flex items-center space-x-2">
+<button class="p-1 border border-surface-variant rounded text-on-surface-variant disabled:opacity-50"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="p-1 border border-surface-variant rounded text-on-surface-variant hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar (Floating for long lists) -->
+<div class="fixed bottom-[80px] md:bottom-6 right-4 md:right-lg lg:right-xl z-30">
+<button class="flex items-center justify-center px-6 py-3 bg-[#39A935] text-white rounded-full font-label-md text-label-md font-bold shadow-[0_10px_15px_-3px_rgba(0,0,0,0.08)] hover:bg-[#2d8a2a] hover:-translate-y-0.5 transition-all duration-200">
+<span class="material-symbols-outlined mr-2">save</span>
+                        Guardar Cambios
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest dark:bg-surface-container-lowest shadow-[0_-1px_3px_rgba(0,0,0,0.05)] rounded-t-xl border-t border-surface-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">home</span>
+<span class="font-label-md-mobile text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold bg-primary-container/10 rounded-xl px-4 py-1 transition-all" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+<span class="font-label-md-mobile text-[10px]">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">history</span>
+<span class="font-label-md-mobile text-[10px]">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">person</span>
+<span class="font-label-md-mobile text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>

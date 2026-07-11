@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SENA Attendance - Justifications Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Modal transitions */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-leave {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .modal-leave-active {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+            transition: opacity 200ms cubic-bezier(0.4, 0, 1, 1), transform 200ms cubic-bezier(0.4, 0, 1, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#6f7a69",
+                        "surface": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#dce2f7",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed-variant": "#404754",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-container": "#39a935",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed": "#002201",
+                        "primary": "#006e0d",
+                        "on-primary-fixed-variant": "#005307",
+                        "surface-bright": "#f8f9fa",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "on-surface": "#191c1d",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-container": "#003503",
+                        "tertiary": "#585f6c",
+                        "outline-variant": "#becab6",
+                        "surface-tint": "#006e0d",
+                        "primary-fixed": "#8bfc7c",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#6fde63",
+                        "primary-fixed-dim": "#6fde63",
+                        "tertiary-fixed": "#dce2f3",
+                        "secondary-container": "#d9dff5",
+                        "on-secondary-fixed": "#141b2b",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#5c6274",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#c0c7d6",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-container": "#262d39",
+                        "tertiary-container": "#8d94a3",
+                        "on-surface-variant": "#3f4a3b",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1d",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed": "#151c27",
+                        "secondary": "#575e70",
+                        "surface-container": "#edeeef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "16px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "sidebar-width": "260px",
+                        "sm": "12px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased h-screen overflow-hidden flex flex-col md:flex-row">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-lg h-16 bg-surface-container-lowest border-b border-surface-variant shadow-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 duration-150" data-icon="menu">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">SENA</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 duration-150" data-icon="notifications">notifications</span>
+<img alt="User profile" class="w-8 h-8 rounded-full object-cover border border-surface-variant" data-alt="A small, circular avatar image of a user with short dark hair, wearing a white shirt, against a soft light gray background. High quality, professional portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcN_1zuwge3JeJ7ujGmsJzs_yeQYHH99rNQovkSynkrWjPGvFhAFTfIJpwvVOhJlZ6Oef5ECQIN6mAr1jV5lGVgg9lIi3Nw28l8EG6QlJwuHKhfMK-GQOcJyQ25HKybYkfEFnXr-eHhFOiuR9Bmt56KRb7NmvHWku78vmMaJ6SZYG9A0E7i7Yyf3Tu5AZLHXb0CU2Fr0DDbme6k0gM6vqMU30MPXN5nwxT2JFziM4dVrUc_gYEZZLnxvHbF-_K5lyRMbI0BZffrw"/>
+</div>
+</header>
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex flex-col w-[260px] h-screen fixed left-0 top-0 pt-16 bg-surface-container-low border-r border-surface-variant z-40">
+<div class="p-lg flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary fill" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SENA</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Attendance System</p>
+</div>
+</div>
+<ul class="flex-1 mt-md flex flex-col gap-sm px-sm">
+<li class="flex items-center gap-md px-4 py-3 rounded-lg cursor-pointer text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</li>
+<li class="flex items-center gap-md px-4 py-3 rounded-lg cursor-pointer text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">My Groups</span>
+</li>
+<li class="flex items-center gap-md px-4 py-3 rounded-lg cursor-pointer text-on-surface font-bold border-l-4 border-primary bg-surface-container-high transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined fill text-primary" data-icon="fact_check">fact_check</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</li>
+<li class="flex items-center gap-md px-4 py-3 rounded-lg cursor-pointer text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</li>
+<li class="flex items-center gap-md px-4 py-3 rounded-lg cursor-pointer text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</li>
+</ul>
+<div class="p-4 border-t border-surface-variant">
+<div class="flex items-center gap-md px-4 py-3 rounded-lg cursor-pointer text-error font-medium hover:bg-error-container/50 transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-[260px] pt-16 md:pt-0 h-full overflow-y-auto bg-surface relative pb-20 md:pb-0">
+<!-- Header -->
+<div class="sticky top-0 z-30 bg-surface/90 backdrop-blur-md border-b border-surface-variant px-lg py-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg text-on-surface mb-1">Justifications Management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Review and manage apprentice absence justifications.</p>
+</div>
+<button class="bg-primary-container text-on-primary hover:bg-primary-container/90 transition-colors rounded-lg px-6 py-2.5 font-label-md text-label-md shadow-sm flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="upload_file">upload_file</span>
+                Subir Justificación
+            </button>
+</div>
+<!-- Content Container -->
+<div class="p-md md:p-lg max-w-[container-max] mx-auto w-full flex flex-col gap-lg">
+<!-- Filters & Search -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-4 flex flex-col md:flex-row gap-4 items-center justify-between shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_1px_2px_rgba(0,0,0,0.03)]">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface rounded-lg border border-surface-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant" placeholder="Search by apprentice or reason..." type="text"/>
+</div>
+<div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+<button class="px-4 py-1.5 rounded-full border border-primary-container bg-primary-container/10 text-primary-container font-label-md text-label-md whitespace-nowrap">All</button>
+<button class="px-4 py-1.5 rounded-full border border-surface-variant bg-surface text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md whitespace-nowrap">Pendiente</button>
+<button class="px-4 py-1.5 rounded-full border border-surface-variant bg-surface text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md whitespace-nowrap">Aprobada</button>
+<button class="px-4 py-1.5 rounded-full border border-surface-variant bg-surface text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md whitespace-nowrap">Rechazada</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_1px_2px_rgba(0,0,0,0.03)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Apprentice</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Date Submitted</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Reason</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Evidence</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- Row 1: Pendiente -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-sm">
+                                            MR
+                                        </div>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Maria Rodriguez</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Group 101 - Morning</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface">Oct 24, 2023</td>
+<td class="py-4 px-4">
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 max-w-[200px]" title="Cita médica programada">Medical Appointment</p>
+</td>
+<td class="py-4 px-4">
+<button class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors" onclick="openModal()">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="font-label-md text-label-md underline underline-offset-2">View PDF</span>
+</button>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary-container text-on-secondary-container border border-secondary-container/20">
+                                        Pendiente
+                                    </span>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-primary hover:bg-primary/10 rounded-md transition-colors" title="Approve">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+</button>
+<button class="p-1.5 text-error hover:bg-error/10 rounded-md transition-colors" title="Reject">
+<span class="material-symbols-outlined text-[20px]" data-icon="cancel">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Aprobada -->
+<tr class="bg-surface hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<img alt="Juan Perez" class="w-8 h-8 rounded-full object-cover border border-surface-variant" data-alt="A small, circular avatar image of a young male student with glasses, smiling slightly, wearing a casual dark blue t-shirt against a light gray background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCGn75f1I9FF4HqrxVEhfTAcpmotY9ML2eTM8JMwWBGttXCwvmZRxmaAlQrvvD2jVMexqPTZxwG03NPkdcK_Mevy4pje5wZwGExq52Ok-8BPnCNKOc8qg8Cf7itTdZvJ6Des6PK3cnsjUdwFgQ5744ia2Z3boBFs31fsQvqvERuEYUjcgzAnwE0nqQmsLllI7XFNz8kPog8Am1m-SA0p20Ss-EmtWtWA0mXgOcGjAnuuZtgYjl7a_ffVTz8drK0g1w7eb0jk0zdg"/>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Juan Perez</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Group 203 - Afternoon</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface">Oct 22, 2023</td>
+<td class="py-4 px-4">
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 max-w-[200px]" title="Problemas de transporte público por paro">Transportation Issue</p>
+</td>
+<td class="py-4 px-4">
+<button class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="image">image</span>
+<span class="font-label-md text-label-md underline underline-offset-2">View Image</span>
+</button>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                                        Aprobada
+                                    </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors opacity-0 group-hover:opacity-100" title="More options">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Rechazada -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold text-sm">
+                                            LC
+                                        </div>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Luis Castro</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Group 101 - Morning</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface">Oct 20, 2023</td>
+<td class="py-4 px-4">
+<p class="font-body-md text-body-md text-on-surface line-clamp-1 max-w-[200px]">Personal matters</p>
+</td>
+<td class="py-4 px-4">
+<span class="text-on-surface-variant text-sm italic font-body-md">No evidence provided</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-error-container text-on-error-container border border-error-container/50">
+                                        Rechazada
+                                    </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-md transition-colors opacity-0 group-hover:opacity-100" title="More options">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-4 py-3 border-t border-surface-variant bg-surface-container-lowest flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Showing 1 to 3 of 12 entries</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-surface-variant text-on-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-primary-container bg-primary-container/10 text-primary-container font-label-md font-medium">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-surface-variant hover:bg-surface-container-low text-on-surface font-label-md font-medium">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-surface-variant hover:bg-surface-container-low text-on-surface font-label-md font-medium">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-surface-variant text-on-surface-variant hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest rounded-t-xl shadow-[0_-1px_3px_rgba(0,0,0,0.05)] shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 duration-100 active:bg-surface-variant/50 py-2 w-16 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-md-mobile text-label-md-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 duration-100 active:bg-surface-variant/50 py-2 w-16 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-md-mobile text-label-md-mobile">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-primary-container/10 rounded-xl px-4 py-1 scale-95 duration-100 active:bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined mb-1 fill" data-icon="history">history</span>
+<span class="font-label-md-mobile text-label-md-mobile">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 duration-100 active:bg-surface-variant/50 py-2 w-16 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-md-mobile text-label-md-mobile">Profile</span>
+</a>
+</nav>
+<!-- Evidence Modal Backdrop -->
+<div class="fixed inset-0 bg-on-surface/40 backdrop-blur-[2px] z-[60] hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" id="modalBackdrop">
+<!-- Modal Content -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.08),0px_4px_6px_-2px_rgba(0,0,0,0.04)] w-full max-w-2xl overflow-hidden flex flex-col max-h-[921px] scale-95 transition-transform duration-300" id="modalContent">
+<!-- Modal Header -->
+<div class="px-6 py-4 border-b border-surface-variant flex items-center justify-between bg-surface">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Evidence Preview</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Maria Rodriguez - Medical Appointment</p>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant" onclick="closeModal()">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Modal Body (Preview Area) -->
+<div class="p-6 bg-surface-container-low flex-1 overflow-y-auto min-h-[300px] flex items-center justify-center border-b border-surface-variant border-dashed m-6 rounded-lg">
+<!-- Simulating a document preview -->
+<div class="text-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[48px] text-surface-variant mb-4" data-icon="description">description</span>
+<p class="font-body-md text-body-md mb-2">certificadomedico_mrodriguez.pdf</p>
+<button class="text-primary hover:text-primary-container font-label-md underline underline-offset-2">Download File</button>
+</div>
+</div>
+<!-- Modal Footer (Actions) -->
+<div class="px-6 py-4 bg-surface-container-lowest flex justify-end gap-3">
+<button class="px-4 py-2 rounded-lg border border-surface-variant bg-surface text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-label-md" onclick="closeModal()">
+                    Cancel
+                </button>
+<div class="flex gap-2 border-l border-surface-variant pl-3 ml-1">
+<button class="px-4 py-2 rounded-lg bg-surface text-error border border-error/20 hover:bg-error/5 transition-colors font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="cancel">cancel</span>
+                         Reject
+                    </button>
+<button class="px-4 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary-container/90 transition-colors font-label-md text-label-md shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+                        Approve
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        const backdrop = document.getElementById('modalBackdrop');
+        const modal = document.getElementById('modalContent');
+
+        function openModal() {
+            backdrop.classList.remove('hidden');
+            // Trigger reflow
+            void backdrop.offsetWidth;
+            
+            backdrop.classList.remove('opacity-0');
+            backdrop.classList.add('opacity-100');
+            
+            modal.classList.remove('scale-95');
+            modal.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            backdrop.classList.remove('opacity-100');
+            backdrop.classList.add('opacity-0');
+            
+            modal.classList.remove('scale-100');
+            modal.classList.add('scale-95');
+            
+            setTimeout(() => {
+                backdrop.classList.add('hidden');
+            }, 300); // match transition duration
+        }
+
+        // Close on backdrop click
+        backdrop.addEventListener('click', function(e) {
+            if (e.target === backdrop) {
+                closeModal();
+            }
+        });
+    </script>
+</body></html>
