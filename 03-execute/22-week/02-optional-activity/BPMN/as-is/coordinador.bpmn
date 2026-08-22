@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" id="Definitions_Process_Coordinador" targetNamespace="http://schedulesena.local/bpmn" exporter="Camunda Modeler" exporterVersion="5.49.0">
+  <bpmn:process id="Process_Coordinador" name="Gestión de horarios del coordinador" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="ls" name="Sistema">
+        <bpmn:flowNodeRef>a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>f</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>l</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="lc" name="Coordinador">
+        <bpmn:flowNodeRef>b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>i</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>k</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>m</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>h</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>s</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>e</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="s" name="Acceso concedido" />
+    <bpmn:serviceTask id="a" name="Cargar dashboard">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="load-coordinator-dashboard" retries="3" />
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="b" name="Revisar estado general" />
+    <bpmn:userTask id="c" name="Crear o abrir horario" />
+    <bpmn:userTask id="d" name="Agregar o editar sesión" />
+    <bpmn:serviceTask id="f" name="Verificar conflictos">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="check-schedule-conflicts" retries="3" />
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="g" name="¿Hay conflictos?" />
+    <bpmn:userTask id="h" name="Resolver conflicto" />
+    <bpmn:userTask id="i" name="Revisar disponibilidad de ambientes" />
+    <bpmn:userTask id="k" name="Confirmar publicación" />
+    <bpmn:serviceTask id="l" name="Publicar horario">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="publish-schedule" retries="3" />
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="m" name="Consultar fichas relacionadas" />
+    <bpmn:endEvent id="e" name="Horario publicado" />
+    <bpmn:sequenceFlow id="f1" sourceRef="s" targetRef="a" />
+    <bpmn:sequenceFlow id="f2" sourceRef="a" targetRef="b" />
+    <bpmn:sequenceFlow id="f3" sourceRef="b" targetRef="c" />
+    <bpmn:sequenceFlow id="f4" sourceRef="c" targetRef="d" />
+    <bpmn:sequenceFlow id="f5" sourceRef="d" targetRef="f" />
+    <bpmn:sequenceFlow id="f6" sourceRef="f" targetRef="g" />
+    <bpmn:sequenceFlow id="f7" name="Sí" sourceRef="g" targetRef="h" />
+    <bpmn:sequenceFlow id="f8" sourceRef="h" targetRef="d" />
+    <bpmn:sequenceFlow id="f9" name="No" sourceRef="g" targetRef="i" />
+    <bpmn:sequenceFlow id="f10" sourceRef="i" targetRef="k" />
+    <bpmn:sequenceFlow id="f11" sourceRef="k" targetRef="l" />
+    <bpmn:sequenceFlow id="f12" sourceRef="l" targetRef="m" />
+    <bpmn:sequenceFlow id="f13" sourceRef="m" targetRef="e" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="D_Process_Coordinador">
+    <bpmndi:BPMNPlane id="P_Process_Coordinador" bpmnElement="Process_Coordinador">
+      <bpmndi:BPMNShape id="ls_di" bpmnElement="ls" isHorizontal="true">
+        <dc:Bounds x="160" y="410" width="2520" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="lc_di" bpmnElement="lc" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="2520" height="330" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_di" bpmnElement="s">
+        <dc:Bounds x="180" y="307" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="173" y="343" width="50" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="b_di" bpmnElement="b">
+        <dc:Bounds x="560" y="290" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="c_di" bpmnElement="c">
+        <dc:Bounds x="750" y="290" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a_di" bpmnElement="a">
+        <dc:Bounds x="340" y="460" width="160" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="f_di" bpmnElement="f">
+        <dc:Bounds x="1130" y="485" width="160" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g_di" bpmnElement="g" isMarkerVisible="true">
+        <dc:Bounds x="1365" y="495" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1350" y="545" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="i_di" bpmnElement="i">
+        <dc:Bounds x="1550" y="325" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="k_di" bpmnElement="k">
+        <dc:Bounds x="1785" y="290" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_di" bpmnElement="e">
+        <dc:Bounds x="2472" y="307" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2448" y="343" width="84" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="m_di" bpmnElement="m">
+        <dc:Bounds x="2245" y="290" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="l_di" bpmnElement="l">
+        <dc:Bounds x="2000" y="460" width="160" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="h_di" bpmnElement="h">
+        <dc:Bounds x="1375" y="175" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="d_di" bpmnElement="d">
+        <dc:Bounds x="940" y="292" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="f1_di" bpmnElement="f1">
+        <di:waypoint x="216" y="325" />
+        <di:waypoint x="278" y="325" />
+        <di:waypoint x="278" y="495" />
+        <di:waypoint x="340" y="495" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f2_di" bpmnElement="f2">
+        <di:waypoint x="500" y="495" />
+        <di:waypoint x="530" y="495" />
+        <di:waypoint x="530" y="325" />
+        <di:waypoint x="560" y="325" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f3_di" bpmnElement="f3">
+        <di:waypoint x="710" y="325" />
+        <di:waypoint x="750" y="325" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f4_di" bpmnElement="f4">
+        <di:waypoint x="900" y="325" />
+        <di:waypoint x="920" y="325" />
+        <di:waypoint x="920" y="327" />
+        <di:waypoint x="940" y="327" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f5_di" bpmnElement="f5">
+        <di:waypoint x="1090" y="327" />
+        <di:waypoint x="1110" y="327" />
+        <di:waypoint x="1110" y="520" />
+        <di:waypoint x="1130" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f6_di" bpmnElement="f6">
+        <di:waypoint x="1290" y="520" />
+        <di:waypoint x="1365" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f7_di" bpmnElement="f7">
+        <di:waypoint x="1415" y="520" />
+        <di:waypoint x="1470" y="520" />
+        <di:waypoint x="1470" y="245" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1474" y="491" width="9" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f8_di" bpmnElement="f8">
+        <di:waypoint x="1375" y="210" />
+        <di:waypoint x="1270" y="210" />
+        <di:waypoint x="1270" y="327" />
+        <di:waypoint x="1090" y="327" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f9_di" bpmnElement="f9">
+        <di:waypoint x="1390" y="495" />
+        <di:waypoint x="1390" y="327" />
+        <di:waypoint x="1554" y="327" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1367" y="397" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f10_di" bpmnElement="f10">
+        <di:waypoint x="1700" y="360" />
+        <di:waypoint x="1743" y="360" />
+        <di:waypoint x="1743" y="325" />
+        <di:waypoint x="1785" y="325" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f11_di" bpmnElement="f11">
+        <di:waypoint x="1935" y="325" />
+        <di:waypoint x="1970" y="325" />
+        <di:waypoint x="1970" y="495" />
+        <di:waypoint x="2000" y="495" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f12_di" bpmnElement="f12">
+        <di:waypoint x="2160" y="495" />
+        <di:waypoint x="2190" y="495" />
+        <di:waypoint x="2190" y="325" />
+        <di:waypoint x="2245" y="325" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f13_di" bpmnElement="f13">
+        <di:waypoint x="2395" y="325" />
+        <di:waypoint x="2472" y="325" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
