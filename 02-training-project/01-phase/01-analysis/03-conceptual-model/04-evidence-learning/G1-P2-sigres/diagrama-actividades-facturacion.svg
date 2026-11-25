@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="620" viewBox="0 0 760 620" font-family="Arial, Helvetica, sans-serif">
+  <rect width="760" height="620" fill="#ffffff"/>
+  <defs>
+    <marker id="arr2" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#334155" stroke-width="1.4"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="320" height="580" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="20" y="20" width="320" height="28" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="180" y="39" text-anchor="middle" font-size="12" font-weight="bold">Cajero</text>
+
+  <rect x="340" y="20" width="400" height="580" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="340" y="20" width="400" height="28" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="540" y="39" text-anchor="middle" font-size="12" font-weight="bold">Sistema SIGRES</text>
+
+  <circle cx="180" cy="75" r="11" fill="#0f172a"/>
+  <line x1="180" y1="86" x2="180" y2="112" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+
+  <rect x="90" y="115" width="180" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="180" y="139" text-anchor="middle" font-size="11">Seleccionar mesa o pedido</text>
+  <line x1="270" y1="135" x2="513" y2="135" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+
+  <polygon points="540,111 565,135 540,159 515,135" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="515" y1="135" x2="430" y2="200" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+  <text x="415" y="168" font-size="10" fill="#b91c1c">[sin pedido activo]</text>
+  <rect x="355" y="203" width="145" height="38" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.3"/>
+  <text x="427" y="226" text-anchor="middle" font-size="10">Informar sin consumo</text>
+
+  <line x1="540" y1="159" x2="580" y2="200" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+  <text x="618" y="182" font-size="10">[pedido entregado]</text>
+  <rect x="520" y="203" width="195" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="617" y="227" text-anchor="middle" font-size="11">Calcular total y generar factura</text>
+  <line x1="520" y1="223" x2="270" y2="295" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+
+  <rect x="85" y="285" width="185" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="177" y="309" text-anchor="middle" font-size="11">Ingresar metodo y pago</text>
+  <line x1="270" y1="305" x2="513" y2="305" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+
+  <polygon points="540,281 565,305 540,329 515,305" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="515" y1="305" x2="430" y2="370" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+  <text x="415" y="338" font-size="10" fill="#b91c1c">[monto insuficiente]</text>
+  <rect x="355" y="373" width="145" height="38" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.3"/>
+  <text x="427" y="396" text-anchor="middle" font-size="10">Solicitar monto valido</text>
+
+  <line x1="540" y1="329" x2="580" y2="370" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+  <text x="612" y="352" font-size="10">[pago valido]</text>
+  <rect x="520" y="373" width="195" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="617" y="397" text-anchor="middle" font-size="11">Registrar pago y liberar mesa</text>
+
+  <line x1="617" y1="413" x2="617" y2="480" stroke="#334155" stroke-width="1.4" marker-end="url(#arr2)"/>
+  <circle cx="617" cy="500" r="14" fill="none" stroke="#0f172a" stroke-width="2"/>
+  <circle cx="617" cy="500" r="9" fill="#0f172a"/>
+</svg>
