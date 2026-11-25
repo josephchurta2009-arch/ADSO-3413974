@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="740" viewBox="0 0 940 740" font-family="Arial, Helvetica, sans-serif">
+  <rect width="940" height="740" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#334155" stroke-width="1.4"/>
+    </marker>
+  </defs>
+  <!-- Swimlanes -->
+  <rect x="20" y="20" width="270" height="700" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="20" y="20" width="270" height="28" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="155" y="39" text-anchor="middle" font-size="12" font-weight="bold">Mesero</text>
+
+  <rect x="290" y="20" width="350" height="700" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="290" y="20" width="350" height="28" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="465" y="39" text-anchor="middle" font-size="12" font-weight="bold">Sistema SIGRES</text>
+
+  <rect x="640" y="20" width="280" height="700" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="640" y="20" width="280" height="28" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="780" y="39" text-anchor="middle" font-size="12" font-weight="bold">Sistema de Cocina</text>
+
+  <!-- Start -->
+  <circle cx="155" cy="75" r="11" fill="#0f172a"/>
+  <line x1="155" y1="86" x2="155" y2="115" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Mesero: seleccionar -->
+  <rect x="65" y="118" width="180" height="42" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="155" y="143" text-anchor="middle" font-size="11">Seleccionar mesa y producto</text>
+  <line x1="245" y1="139" x2="438" y2="139" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Decision 1: disponibilidad -->
+  <polygon points="465,115 490,139 465,163 440,139" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="465" y1="163" x2="465" y2="205" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="530" y="185" font-size="10" fill="#1e293b">[producto disponible]</text>
+
+  <line x1="440" y1="139" x2="365" y2="205" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="345" y="172" font-size="10" fill="#b91c1c">[no disponible]</text>
+  <rect x="302" y="208" width="125" height="38" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.3"/>
+  <text x="364" y="231" text-anchor="middle" font-size="10">Notificar no disponible</text>
+
+  <rect x="440" y="208" width="175" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="527" y="232" text-anchor="middle" font-size="11">Agregar item y notas</text>
+  <line x1="527" y1="248" x2="235" y2="305" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Mesero confirmar -->
+  <rect x="75" y="295" width="160" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="155" y="319" text-anchor="middle" font-size="11">Confirmar pedido</text>
+  <line x1="235" y1="315" x2="438" y2="315" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- Decision 2: conexion -->
+  <polygon points="465,291 490,315 465,339 440,315" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="440" y1="315" x2="365" y2="375" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="345" y="346" font-size="10" fill="#b91c1c">[sin conexion]</text>
+  <rect x="302" y="378" width="125" height="38" rx="8" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.3"/>
+  <text x="364" y="401" text-anchor="middle" font-size="10">Mostrar error conexion</text>
+
+  <line x1="465" y1="339" x2="465" y2="435" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="530" y="388" font-size="10" fill="#1e293b">[conexion activa]</text>
+
+  <!-- Fork -->
+  <rect x="385" y="438" width="160" height="6" fill="#0f172a"/>
+  <line x1="430" y1="444" x2="430" y2="485" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="510" y1="444" x2="780" y2="485" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <rect x="345" y="488" width="170" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="430" y="512" text-anchor="middle" font-size="11">Actualizar mesa a Ocupada</text>
+
+  <rect x="695" y="488" width="170" height="40" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="780" y="512" text-anchor="middle" font-size="11">Recibir comanda en cocina</text>
+
+  <!-- Join -->
+  <line x1="430" y1="528" x2="430" y2="575" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="780" y1="528" x2="510" y2="575" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <rect x="385" y="578" width="160" height="6" fill="#0f172a"/>
+
+  <!-- End -->
+  <line x1="465" y1="584" x2="465" y2="635" stroke="#334155" stroke-width="1.4" marker-end="url(#arr)"/>
+  <circle cx="465" cy="655" r="14" fill="none" stroke="#0f172a" stroke-width="2"/>
+  <circle cx="465" cy="655" r="9" fill="#0f172a"/>
+</svg>
