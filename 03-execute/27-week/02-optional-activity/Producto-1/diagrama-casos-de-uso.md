@@ -1,245 +1,196 @@
-# 📊 Diagrama de Casos de Uso — SIGRES
+# Diagrama de Casos de Uso — SIGRES
 
-**Proyecto:** Sistema Integral de Gestión para Restaurantes  
-**Versión:** 1.0 | **Fecha:** Noviembre 2026  
-**Basado en:** SRS-SIGRES v1.0 (sección "Requisitos de Caso de Uso")
+**Proyecto:** Sistema Integral de Gestion para Restaurantes
+**Version:** 1.0 | **Fecha:** Noviembre 2026
+**Basado en:** SRS-SIGRES v1.0
 
 ---
 
-## 🎭 Actores del sistema
+## Actores del sistema
 
-| Actor | Tipo | Descripción |
+| Actor | Tipo | Plataforma | Descripcion |
+|---|---|---|---|
+| **Administrador** | Principal | Web | Gestion total del sistema |
+| **Mesero** | Principal | App Movil | Registro de pedidos y mesas |
+| **Cajero** | Principal | Web | Facturacion y pagos |
+| **Gerente** | Principal | Web | Reportes e indicadores |
+| **Cliente** | Principal | QR Movil | Menu digital sin login |
+| **Sistema SIGRES** | Secundario | Interno | Logica automatizada |
+
+---
+
+## Diagrama UML de Casos de Uso
+
+```mermaid
+flowchart LR
+    %% Actores
+    Admin(["👤 Administrador"])
+    Mesero(["👤 Mesero"])
+    Cajero(["👤 Cajero"])
+    Gerente(["👤 Gerente"])
+    Cliente(["👤 Cliente\n(QR - sin login)"])
+    Sistema(["⚙️ Sistema SIGRES"])
+
+    subgraph M1["Modulo 1 — Autenticacion y Usuarios"]
+        CU01["CU-01\nRegistrar usuario"]
+        CU02["CU-02\nIniciar sesion"]
+        CU03["CU-03\nGestionar roles y permisos"]
+    end
+
+    subgraph M2["Modulo 2 — Gestion de Pedidos"]
+        CU04["CU-04\nRegistrar pedido (comanda)"]
+        CU05["CU-05\nEnviar pedido a cocina"]
+        CU06["CU-06\nConsultar estado del pedido"]
+        CU07["CU-07\nActualizar estado del pedido"]
+    end
+
+    subgraph M3["Modulo 3 — Menu, Inventario y Mesas"]
+        CU08["CU-08\nAdministrar productos del menu"]
+        CU09["CU-09\nGestionar categorias del menu"]
+        CU10["CU-10\nControlar inventario"]
+        CU11["CU-11\nGestionar mesas"]
+    end
+
+    subgraph M4["Modulo 4 — Facturacion y Caja"]
+        CU12["CU-12\nGenerar factura"]
+        CU13["CU-13\nProcesar pago"]
+        CU14["CU-14\nCierre de caja"]
+    end
+
+    subgraph M5["Modulo 5 — Reportes y Menu QR"]
+        CU15["CU-15\nGenerar reportes de ventas"]
+        CU16["CU-16\nVer menu digital QR"]
+        CU17["CU-17\nConsultar consumo actual QR"]
+    end
+
+    %% Administrador
+    Admin --> CU01
+    Admin --> CU02
+    Admin --> CU03
+    Admin --> CU08
+    Admin --> CU09
+    Admin --> CU10
+    Admin --> CU11
+    Admin --> CU12
+    Admin --> CU13
+    Admin --> CU14
+    Admin --> CU15
+
+    %% Mesero
+    Mesero --> CU02
+    Mesero --> CU04
+    Mesero --> CU06
+    Mesero --> CU11
+
+    %% Cajero
+    Cajero --> CU02
+    Cajero --> CU12
+    Cajero --> CU13
+    Cajero --> CU14
+
+    %% Gerente
+    Gerente --> CU02
+    Gerente --> CU15
+
+    %% Cliente (sin autenticacion)
+    Cliente --> CU16
+    Cliente --> CU17
+
+    %% Sistema SIGRES (automatico)
+    CU04 -->|incluye| CU05
+    Sistema --> CU05
+    Sistema --> CU07
+    Sistema --> CU10
+```
+
+---
+
+## Relaciones entre casos de uso
+
+| Relacion | Tipo | Descripcion |
 |---|---|---|
-| **Administrador** | Principal | Gestión total del sistema. Accede por web. |
-| **Mesero** | Principal | Registra pedidos y gestiona mesas. Accede por app móvil. |
-| **Cajero** | Principal | Procesa pagos y genera facturas. Accede por web. |
-| **Gerente** | Principal | Consulta reportes e indicadores. Accede por web. |
-| **Cliente** | Principal | Consulta menú digital y consumo via QR. Sin login. |
-| **Sistema SIGRES** | Secundario | Actor interno que ejecuta lógica de negocio automática. |
+| CU-04 → CU-05 | `<<include>>` | Registrar pedido siempre incluye enviarlo a cocina |
+| CU-04 → CU-06 | `<<extend>>` | El mesero puede consultar el estado tras registrar |
+| CU-12 → CU-13 | `<<extend>>` | Generar factura puede extenderse a procesar pago |
+| CU-16 → CU-17 | `<<extend>>` | Ver menu puede extenderse a ver consumo si hay pedido activo |
+| CU-02 → CU-03 | `<<extend>>` | Iniciar sesion extiende la gestion de roles para el admin |
 
 ---
 
-## 📋 Diagrama UML de Casos de Uso (representación textual)
+## Caracterizacion de Casos de Uso
 
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                        Sistema SIGRES                                     │
-│                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────────┐ │
-│  │ MÓDULO 1 — Autenticación y Usuarios                                 │ │
-│  │   ○ CU-01: Registrar usuario                                        │ │
-│  │   ○ CU-02: Iniciar sesión                                           │ │
-│  │   ○ CU-03: Gestionar roles y permisos                               │ │
-│  └─────────────────────────────────────────────────────────────────────┘ │
-│                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────────┐ │
-│  │ MÓDULO 2 — Gestión de Pedidos                                       │ │
-│  │   ○ CU-04: Registrar pedido (comanda)                               │ │
-│  │   ○ CU-05: Enviar pedido a cocina                                   │ │
-│  │   ○ CU-06: Consultar estado del pedido                              │ │
-│  │   ○ CU-07: Actualizar estado del pedido                             │ │
-│  └─────────────────────────────────────────────────────────────────────┘ │
-│                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────────┐ │
-│  │ MÓDULO 3 — Menú, Inventario y Mesas                                 │ │
-│  │   ○ CU-08: Administrar productos del menú (CRUD)                    │ │
-│  │   ○ CU-09: Gestionar categorías del menú                            │ │
-│  │   ○ CU-10: Controlar inventario de insumos                          │ │
-│  │   ○ CU-11: Gestionar mesas                                          │ │
-│  └─────────────────────────────────────────────────────────────────────┘ │
-│                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────────┐ │
-│  │ MÓDULO 4 — Facturación y Caja                                       │ │
-│  │   ○ CU-12: Generar factura                                          │ │
-│  │   ○ CU-13: Procesar pago                                            │ │
-│  │   ○ CU-14: Realizar cierre de caja                                  │ │
-│  └─────────────────────────────────────────────────────────────────────┘ │
-│                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────────┐ │
-│  │ MÓDULO 5 — Reportes y Menú Digital QR                               │ │
-│  │   ○ CU-15: Generar reportes de ventas                               │ │
-│  │   ○ CU-16: Ver menú digital (QR)                                    │ │
-│  │   ○ CU-17: Consultar consumo actual (QR)                            │ │
-│  └─────────────────────────────────────────────────────────────────────┘ │
-│                                                                           │
-└──────────────────────────────────────────────────────────────────────────┘
-
-Actores y sus casos de uso:
-
-[Administrador] ──── CU-01, CU-02, CU-03, CU-08, CU-09, CU-10, CU-11,
-                      CU-12, CU-13, CU-14, CU-15
-
-[Mesero]        ──── CU-02, CU-04, CU-05, CU-06, CU-11
-
-[Cajero]        ──── CU-02, CU-12, CU-13, CU-14
-
-[Gerente]       ──── CU-02, CU-15
-
-[Cliente]       ──── CU-16, CU-17  (sin autenticación)
-
-[Sistema SIGRES] ─── CU-05 (envío automático a cocina)
-                      CU-07 (actualización automática de estados)
-                      CU-10 (alertas automáticas de stock)
-```
-
----
-
-## 📝 Caracterización de Casos de Uso
-
-### Grupo 1 — Autenticación y Gestión de Usuarios
-
----
-
-#### CU-01: Registrar Usuario
+### CU-01: Registrar Usuario
 
 | Campo | Detalle |
 |---|---|
-| **Identificador** | CU-01 |
-| **Nombre** | Registrar Usuario |
 | **Actor principal** | Administrador |
 | **RF asociado** | RF01 |
-| **Prioridad** | Alta |
-| **Precondiciones** | El Administrador debe estar autenticado en el sistema. |
-| **Postcondiciones** | El usuario queda registrado con el rol asignado y puede iniciar sesión. |
+| **Prioridad** | Alta — Critico |
+| **Precondicion** | El administrador esta autenticado |
+| **Postcondicion** | Usuario creado con rol asignado, puede iniciar sesion |
+| **Flujo principal** | 1. Admin accede a gestion de usuarios → 2. Selecciona "Nuevo usuario" → 3. Ingresa datos y rol → 4. Sistema valida correo unico → 5. Usuario creado y confirmado |
+| **Error principal** | Correo duplicado: "El correo ya esta registrado" |
 
-**Flujo principal:**
-1. El Administrador accede al módulo de gestión de usuarios.
-2. Selecciona "Registrar nuevo usuario".
-3. Ingresa nombre, correo, contraseña y rol.
-4. El sistema valida los datos e impide correos duplicados.
-5. Se crea el usuario y se confirma el registro.
-
-**Flujos alternativos:**
-- FA-1: El correo ya existe → el sistema muestra advertencia y no crea el usuario.
-
-**Manejo de errores:**
-- ME-1: Campos incompletos → "Complete todos los campos requeridos."
-- ME-2: Correo inválido → "Ingrese un correo electrónico válido."
-
----
-
-#### CU-02: Iniciar Sesión
+### CU-02: Iniciar Sesion
 
 | Campo | Detalle |
 |---|---|
-| **Identificador** | CU-02 |
-| **Nombre** | Iniciar Sesión |
 | **Actor principal** | Administrador / Mesero / Cajero / Gerente |
 | **RF asociado** | RF02 |
-| **Prioridad** | Alta |
-| **Precondiciones** | El usuario debe estar registrado en el sistema con credenciales activas. |
-| **Postcondiciones** | El usuario accede al panel correspondiente a su rol. |
+| **Prioridad** | Alta — Critico |
+| **Precondicion** | Usuario registrado con credenciales activas |
+| **Postcondicion** | Usuario accede al panel segun su rol (token JWT generado) |
+| **Flujo principal** | 1. Usuario ingresa correo y contrasena → 2. Sistema valida → 3. Genera JWT → 4. Redirige al panel del rol |
+| **Error principal** | "Correo o contrasena invalidos" / "Cuenta desactivada" |
 
-**Flujo principal:**
-1. El usuario ingresa correo y contraseña.
-2. El sistema valida las credenciales.
-3. Se genera un token de sesión (JWT).
-4. El sistema redirige al panel según el rol.
-
-**Manejo de errores:**
-- ME-1: Credenciales incorrectas → "Correo o contraseña inválidos."
-- ME-2: Cuenta inactiva → "Su cuenta está desactivada."
-
----
-
-### Grupo 2 — Gestión de Pedidos
-
----
-
-#### CU-04: Registrar Pedido (Comanda)
+### CU-04: Registrar Pedido (Comanda)
 
 | Campo | Detalle |
 |---|---|
-| **Identificador** | CU-04 |
-| **Nombre** | Registrar Pedido (Comanda) |
 | **Actor principal** | Mesero |
 | **RF asociado** | RF04 |
-| **Prioridad** | Alta |
-| **Precondiciones** | El mesero debe estar autenticado. La mesa debe existir. Los productos deben estar disponibles. |
-| **Postcondiciones** | El pedido queda registrado, la comanda llega a cocina y la mesa cambia a "Ocupada". |
+| **Prioridad** | Alta — Critico |
+| **Precondicion** | Mesero autenticado. Mesa seleccionada. Productos disponibles. |
+| **Postcondicion** | Comanda registrada con ID unico. Enviada a cocina. Mesa en estado "Ocupada". |
+| **Flujo principal** | 1. Mesero selecciona mesa → 2. Elige productos con cantidades y notas → 3. Confirma → 4. Sistema crea comanda → 5. Envia a cocina automaticamente |
+| **Error principal** | "No fue posible registrar el pedido. Verifique su conexion." |
 
-**Flujo principal:**
-1. El mesero selecciona la mesa desde la app móvil.
-2. Selecciona los productos con cantidades y observaciones.
-3. Confirma el pedido.
-4. El sistema registra la comanda con ID único y la envía a cocina.
-5. La mesa se marca como "Ocupada".
-
-**Flujos alternativos:**
-- FA-1: Producto no disponible → el sistema lo marca y no lo agrega al pedido.
-
-**Manejo de errores:**
-- ME-1: Sin conexión → "No fue posible registrar el pedido. Verifique su conexión."
-
----
-
-### Grupo 3 — Inventario y Facturación
-
----
-
-#### CU-12: Generar Factura
+### CU-12: Generar Factura
 
 | Campo | Detalle |
 |---|---|
-| **Identificador** | CU-12 |
-| **Nombre** | Generar Factura |
 | **Actor principal** | Cajero / Administrador |
 | **RF asociado** | RF12 |
-| **Prioridad** | Alta |
-| **Precondiciones** | Debe existir un pedido entregado asociado a la mesa. |
-| **Postcondiciones** | Se genera la factura con el detalle de consumo y el total a pagar. |
+| **Prioridad** | Alta — Critico |
+| **Precondicion** | Pedido entregado asociado a la mesa |
+| **Postcondicion** | Factura generada con detalle de consumo y total |
+| **Flujo principal** | 1. Cajero selecciona mesa → 2. Sistema calcula total con impuestos → 3. Genera factura → 4. Cajero entrega al cliente |
+| **Error principal** | "No hay consumo registrado para esta mesa." |
 
-**Flujo principal:**
-1. El cajero selecciona la mesa o el pedido.
-2. El sistema calcula el total con impuestos aplicables.
-3. Se genera la factura con los datos del pedido y el total.
-4. El cajero entrega la factura al cliente (impresa o digital).
-
-**Manejo de errores:**
-- ME-1: Sin pedido activo → "No hay consumo registrado para esta mesa."
-
----
-
-### Grupo 4 — Reportes y Menú Digital QR
-
----
-
-#### CU-16: Ver Menú Digital (QR)
+### CU-16: Ver Menu Digital QR
 
 | Campo | Detalle |
 |---|---|
-| **Identificador** | CU-16 |
-| **Nombre** | Ver Menú Digital (QR) |
 | **Actor principal** | Cliente |
 | **RF asociado** | RF16 |
 | **Prioridad** | Alta |
-| **Precondiciones** | El QR de la mesa debe estar activo. El menú debe tener productos disponibles. El cliente tiene cámara e internet. |
-| **Postcondiciones** | El cliente visualiza el menú completo en su dispositivo. No se realizan cambios en el sistema. |
-
-**Flujo principal:**
-1. El cliente escanea el QR de su mesa.
-2. El sistema valida el QR e identifica la mesa.
-3. Se muestra la interfaz web con el menú organizado por categorías.
-4. El cliente navega por los productos (imágenes, precios, disponibilidad).
-5. Opcionalmente, el cliente selecciona "Ver mi consumo".
-
-**Reglas de negocio:**
-- RN-01: El cliente NO puede realizar pedidos desde el QR.
-- RN-02: Los productos agotados se marcan como "No disponible".
-- RN-03: No requiere autenticación ni registro.
-
-**Manejo de errores:**
-- ME-1: QR inválido → "El código QR no es válido. Solicite al mesero asistencia."
-- ME-2: Sin productos → "No hay productos disponibles en este momento."
+| **Precondicion** | QR activo. Menu con productos. Dispositivo con camara e internet. |
+| **Postcondicion** | Cliente ve el menu. No se modifica nada en el sistema. |
+| **Flujo principal** | 1. Cliente escanea QR → 2. Sistema valida QR e identifica mesa → 3. Muestra menu por categorias con precios en tiempo real |
+| **Regla clave** | El cliente NO puede realizar pedidos desde el QR |
+| **Error principal** | "El codigo QR no es valido. Solicite al mesero asistencia." |
 
 ---
 
-## 🔗 Relaciones entre casos de uso
+## Cobertura total
 
-| CU | Incluye (<<include>>) | Extiende (<<extend>>) |
+| Modulo | CU | Actores involucrados |
 |---|---|---|
-| CU-04 Registrar pedido | CU-05 Enviar a cocina | — |
-| CU-04 Registrar pedido | — | CU-06 Consultar estado |
-| CU-12 Generar factura | — | CU-13 Procesar pago |
-| CU-16 Ver menú QR | — | CU-17 Consultar consumo |
-| CU-02 Iniciar sesión | — | CU-03 Gestionar roles |
+| Autenticacion | CU-01, CU-02, CU-03 | Admin, Mesero, Cajero, Gerente |
+| Pedidos | CU-04, CU-05, CU-06, CU-07 | Mesero, Sistema |
+| Menu / Inventario / Mesas | CU-08, CU-09, CU-10, CU-11 | Admin, Mesero |
+| Facturacion | CU-12, CU-13, CU-14 | Cajero, Admin |
+| Reportes | CU-15 | Admin, Gerente |
+| Menu QR | CU-16, CU-17 | Cliente |
+
+**Total casos de uso:** 17 | **Total actores:** 6 | **Cobertura RF:** 17/17 (100%)
