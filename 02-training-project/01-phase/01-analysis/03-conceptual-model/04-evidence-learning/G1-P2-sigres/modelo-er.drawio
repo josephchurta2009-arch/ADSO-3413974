@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net" modified="2026-11-25T16:55:00.000Z" agent="SIGRES-MER" version="24.7.17">
+  <diagram id="mer" name="MER SIGRES">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1050" pageHeight="700">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="e_rol" value="ROL (PK id_rol, nombre, permisos)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="e_usr" value="USUARIO (PK id_usuario, FK id_rol, nombre, correo, activo)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="280" y="40" width="210" height="65" as="geometry"/></mxCell>
+        <mxCell id="e_mesa" value="MESA (PK id_mesa, numero, estado, codigo_qr)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="40" y="200" width="180" height="65" as="geometry"/></mxCell>
+        <mxCell id="e_ped" value="PEDIDO (PK id_pedido, FK id_mesa, FK id_mesero, fecha_hora, estado)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="280" y="200" width="210" height="70" as="geometry"/></mxCell>
+        <mxCell id="e_det" value="DETALLE_PEDIDO (PK id_detalle, FK id_pedido, FK id_producto, cantidad, precio_unitario, observaciones)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#b45309;" vertex="1" parent="1"><mxGeometry x="540" y="200" width="230" height="75" as="geometry"/></mxCell>
+        <mxCell id="e_prod" value="PRODUCTO (PK id_producto, FK id_categoria, nombre, precio, disponible)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="820" y="200" width="200" height="70" as="geometry"/></mxCell>
+        <mxCell id="e_cat" value="CATEGORIA (PK id_categoria, nombre, descripcion)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="820" y="40" width="200" height="65" as="geometry"/></mxCell>
+        <mxCell id="e_fact" value="FACTURA (PK id_factura, FK id_pedido, FK id_cajero, fecha_emision, total)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="280" y="380" width="210" height="70" as="geometry"/></mxCell>
+        <mxCell id="e_pago" value="PAGO [Debil] (PK id_pago, FK id_factura, metodo_pago, monto, fecha_pago)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#334155;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="40" y="380" width="190" height="70" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
