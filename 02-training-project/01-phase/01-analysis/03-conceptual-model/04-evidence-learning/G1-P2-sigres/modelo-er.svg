@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="510" viewBox="0 0 1020 510" font-family="Arial, Helvetica, sans-serif">
+  <rect width="1020" height="510" fill="#ffffff"/>
+  <text x="20" y="24" font-size="12" font-weight="bold" fill="#0f172a">Notacion: Pata de Gallo (Crow's Foot)</text>
+
+  <!-- ROL -->
+  <rect x="20" y="45" width="180" height="90" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="20" y1="68" x2="200" y2="68" stroke="#1d4ed8"/>
+  <text x="110" y="61" text-anchor="middle" font-size="11" font-weight="bold">ROL</text>
+  <text x="28" y="85" font-size="10">PK id_rol</text>
+  <text x="28" y="101" font-size="10">nombre</text>
+  <text x="28" y="117" font-size="10">permisos</text>
+
+  <!-- USUARIO -->
+  <rect x="270" y="45" width="190" height="105" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="270" y1="68" x2="460" y2="68" stroke="#1d4ed8"/>
+  <text x="365" y="61" text-anchor="middle" font-size="11" font-weight="bold">USUARIO</text>
+  <text x="278" y="85" font-size="10">PK id_usuario</text>
+  <text x="278" y="101" font-size="10">FK id_rol</text>
+  <text x="278" y="117" font-size="10">nombre, correo</text>
+  <text x="278" y="133" font-size="10">password_hash, activo</text>
+
+  <!-- MESA -->
+  <rect x="20" y="210" width="180" height="105" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="20" y1="233" x2="200" y2="233" stroke="#1d4ed8"/>
+  <text x="110" y="226" text-anchor="middle" font-size="11" font-weight="bold">MESA</text>
+  <text x="28" y="250" font-size="10">PK id_mesa</text>
+  <text x="28" y="266" font-size="10">numero, capacidad</text>
+  <text x="28" y="282" font-size="10">estado</text>
+  <text x="28" y="298" font-size="10">codigo_qr</text>
+
+  <!-- PEDIDO -->
+  <rect x="270" y="210" width="190" height="105" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="270" y1="233" x2="460" y2="233" stroke="#1d4ed8"/>
+  <text x="365" y="226" text-anchor="middle" font-size="11" font-weight="bold">PEDIDO</text>
+  <text x="278" y="250" font-size="10">PK id_pedido</text>
+  <text x="278" y="266" font-size="10">FK id_mesa, id_mesero</text>
+  <text x="278" y="282" font-size="10">fecha_hora</text>
+  <text x="278" y="298" font-size="10">estado</text>
+
+  <!-- DETALLE_PEDIDO -->
+  <rect x="530" y="205" width="210" height="115" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <line x1="530" y1="228" x2="740" y2="228" stroke="#b45309"/>
+  <text x="635" y="221" text-anchor="middle" font-size="11" font-weight="bold">DETALLE_PEDIDO (N:M)</text>
+  <text x="538" y="245" font-size="10">PK id_detalle</text>
+  <text x="538" y="261" font-size="10">FK id_pedido, id_producto</text>
+  <text x="538" y="277" font-size="10">cantidad, precio_unitario</text>
+  <text x="538" y="293" font-size="10">observaciones</text>
+
+  <!-- PRODUCTO -->
+  <rect x="810" y="210" width="190" height="105" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="810" y1="233" x2="1000" y2="233" stroke="#1d4ed8"/>
+  <text x="905" y="226" text-anchor="middle" font-size="11" font-weight="bold">PRODUCTO</text>
+  <text x="818" y="250" font-size="10">PK id_producto</text>
+  <text x="818" y="266" font-size="10">FK id_categoria</text>
+  <text x="818" y="282" font-size="10">nombre, precio</text>
+  <text x="818" y="298" font-size="10">disponible</text>
+
+  <!-- CATEGORIA -->
+  <rect x="810" y="45" width="190" height="90" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="810" y1="68" x2="1000" y2="68" stroke="#1d4ed8"/>
+  <text x="905" y="61" text-anchor="middle" font-size="11" font-weight="bold">CATEGORIA</text>
+  <text x="818" y="85" font-size="10">PK id_categoria</text>
+  <text x="818" y="101" font-size="10">nombre</text>
+  <text x="818" y="117" font-size="10">descripcion</text>
+
+  <!-- FACTURA -->
+  <rect x="270" y="380" width="190" height="105" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="270" y1="403" x2="460" y2="403" stroke="#1d4ed8"/>
+  <text x="365" y="396" text-anchor="middle" font-size="11" font-weight="bold">FACTURA</text>
+  <text x="278" y="420" font-size="10">PK id_factura</text>
+  <text x="278" y="436" font-size="10">FK id_pedido, id_cajero</text>
+  <text x="278" y="452" font-size="10">fecha_emision, subtotal</text>
+  <text x="278" y="468" font-size="10">impuesto, total</text>
+
+  <!-- PAGO (Debil - doble borde) -->
+  <rect x="20" y="380" width="180" height="105" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <rect x="24" y="384" width="172" height="97" fill="none" stroke="#334155" stroke-width="1"/>
+  <line x1="24" y1="405" x2="196" y2="405" stroke="#334155"/>
+  <text x="110" y="398" text-anchor="middle" font-size="11" font-weight="bold">PAGO (Entidad Debil)</text>
+  <text x="32" y="422" font-size="10">PK id_pago</text>
+  <text x="32" y="438" font-size="10">FK id_factura</text>
+  <text x="32" y="454" font-size="10">metodo_pago, monto</text>
+  <text x="32" y="470" font-size="10">fecha_pago</text>
+
+  <!-- Relationships with Crow's Foot labels -->
+  <line x1="200" y1="90" x2="270" y2="90" stroke="#334155" stroke-width="1.4"/>
+  <text x="206" y="83" font-size="10">1..1</text><text x="242" y="83" font-size="10">0..N</text>
+
+  <line x1="365" y1="150" x2="365" y2="210" stroke="#334155" stroke-width="1.4"/>
+  <text x="371" y="168" font-size="10">1..1</text><text x="371" y="202" font-size="10">0..N</text>
+
+  <line x1="200" y1="262" x2="270" y2="262" stroke="#334155" stroke-width="1.4"/>
+  <text x="206" y="255" font-size="10">1..1</text><text x="242" y="255" font-size="10">0..N</text>
+
+  <line x1="460" y1="262" x2="530" y2="262" stroke="#334155" stroke-width="1.4"/>
+  <text x="466" y="255" font-size="10">1..1</text><text x="502" y="255" font-size="10">1..N</text>
+
+  <line x1="740" y1="262" x2="810" y2="262" stroke="#334155" stroke-width="1.4"/>
+  <text x="746" y="255" font-size="10">0..N</text><text x="782" y="255" font-size="10">1..1</text>
+
+  <line x1="905" y1="135" x2="905" y2="210" stroke="#334155" stroke-width="1.4"/>
+  <text x="911" y="152" font-size="10">1..1</text><text x="911" y="202" font-size="10">0..N</text>
+
+  <line x1="365" y1="315" x2="365" y2="380" stroke="#334155" stroke-width="1.4"/>
+  <text x="371" y="332" font-size="10">1..1</text><text x="371" y="372" font-size="10">0..1</text>
+
+  <line x1="200" y1="432" x2="270" y2="432" stroke="#334155" stroke-width="1.4"/>
+  <text x="206" y="425" font-size="10">1..N</text><text x="242" y="425" font-size="10">1..1</text>
+</svg>
