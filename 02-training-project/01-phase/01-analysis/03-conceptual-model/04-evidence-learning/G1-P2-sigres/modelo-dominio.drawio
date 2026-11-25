@@ -1,0 +1,21 @@
+<mxfile host="app.diagrams.net" modified="2026-11-25T16:55:00.000Z" agent="SIGRES-UML" version="24.7.17">
+  <diagram id="dom" name="Modelo de Dominio SIGRES">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1050" pageHeight="720">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="rol" value="Rol&#xa;---&#xa;nombreRol&#xa;descripcionPermisos" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="40" y="40" width="160" height="80" as="geometry"/></mxCell>
+        <mxCell id="usr" value="Usuario&#xa;---&#xa;nombre&#xa;estadoCuenta" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="260" y="40" width="150" height="80" as="geometry"/></mxCell>
+        <mxCell id="mesero" value="Mesero&#xa;---&#xa;codigoTurno&#xa;zonaAsignada" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="260" y="180" width="150" height="80" as="geometry"/></mxCell>
+        <mxCell id="mesa" value="Mesa&#xa;---&#xa;numeroMesa&#xa;capacidad&#xa;estadoDisponibilidad" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="40" y="320" width="165" height="95" as="geometry"/></mxCell>
+        <mxCell id="ped" value="Pedido&#xa;---&#xa;numeroOrden&#xa;fechaHora&#xa;estadoPedido" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="275" y="320" width="150" height="95" as="geometry"/></mxCell>
+        <mxCell id="det" value="DetallePedido&#xa;---&#xa;cantidad&#xa;observaciones" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#fef3c7;strokeColor=#b45309;" vertex="1" parent="1"><mxGeometry x="485" y="230" width="150" height="80" as="geometry"/></mxCell>
+        <mxCell id="prod" value="Producto&#xa;---&#xa;nombre&#xa;precioUnitario&#xa;disponible" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="690" y="320" width="150" height="95" as="geometry"/></mxCell>
+        <mxCell id="cat" value="Categoria&#xa;---&#xa;nombreCategoria&#xa;descripcion" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="690" y="140" width="150" height="80" as="geometry"/></mxCell>
+        <mxCell id="ins" value="Insumo&#xa;---&#xa;nombreInsumo&#xa;cantidadExistente&#xa;stockMinimo" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="690" y="480" width="155" height="95" as="geometry"/></mxCell>
+        <mxCell id="fact" value="Factura&#xa;---&#xa;numeroFactura&#xa;fechaEmision&#xa;total" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="275" y="490" width="150" height="95" as="geometry"/></mxCell>
+        <mxCell id="pago" value="Pago&#xa;---&#xa;metodoPago&#xa;montoRecibido&#xa;fechaPago" style="swimlane;fontStyle=1;align=center;startSize=26;fillColor=#eff6ff;strokeColor=#1d4ed8;" vertex="1" parent="1"><mxGeometry x="40" y="490" width="155" height="95" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
