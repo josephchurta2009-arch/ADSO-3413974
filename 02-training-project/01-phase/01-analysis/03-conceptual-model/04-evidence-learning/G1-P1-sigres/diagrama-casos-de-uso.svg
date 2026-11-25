@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="940" viewBox="0 0 1180 940" font-family="Arial, Helvetica, sans-serif">
+  <rect width="1180" height="940" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowOpen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6" fill="none" stroke="#334155" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrowGen" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- System Boundary -->
+  <rect x="280" y="25" width="630" height="890" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <rect x="280" y="25" width="170" height="28" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+  <text x="365" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">Sistema SIGRES</text>
+
+  <!-- Helper macro style for actor -->
+  <!-- Usuario Autenticado -->
+  <g transform="translate(55,55)">
+    <circle cx="0" cy="-15" r="10" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="-5" x2="0" y2="20" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="-14" y1="5" x2="14" y2="5" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="20" x2="-12" y2="38" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="20" x2="12" y2="38" stroke="#0f172a" stroke-width="1.8"/>
+    <text x="0" y="54" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Usuario Autenticado</text>
+  </g>
+
+  <!-- Administrador -->
+  <g transform="translate(165,165)">
+    <circle cx="0" cy="-15" r="9" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="-6" x2="0" y2="18" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="-12" y1="4" x2="12" y2="4" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="-10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <text x="0" y="48" text-anchor="middle" font-size="11" fill="#0f172a">Administrador</text>
+  </g>
+
+  <!-- Mesero -->
+  <g transform="translate(165,375)">
+    <circle cx="0" cy="-15" r="9" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="-6" x2="0" y2="18" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="-12" y1="4" x2="12" y2="4" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="-10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <text x="0" y="48" text-anchor="middle" font-size="11" fill="#0f172a">Mesero</text>
+  </g>
+
+  <!-- Cajero -->
+  <g transform="translate(165,575)">
+    <circle cx="0" cy="-15" r="9" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="-6" x2="0" y2="18" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="-12" y1="4" x2="12" y2="4" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="-10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <text x="0" y="48" text-anchor="middle" font-size="11" fill="#0f172a">Cajero</text>
+  </g>
+
+  <!-- Gerente -->
+  <g transform="translate(165,710)">
+    <circle cx="0" cy="-15" r="9" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="-6" x2="0" y2="18" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="-12" y1="4" x2="12" y2="4" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="-10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <text x="0" y="48" text-anchor="middle" font-size="11" fill="#0f172a">Gerente</text>
+  </g>
+
+  <!-- Cliente QR -->
+  <g transform="translate(165,830)">
+    <circle cx="0" cy="-15" r="9" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="-6" x2="0" y2="18" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="-12" y1="4" x2="12" y2="4" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="-10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <text x="0" y="48" text-anchor="middle" font-size="11" fill="#0f172a">Cliente (QR)</text>
+  </g>
+
+  <!-- Sistema de Cocina (Secondary Actor, Right) -->
+  <g transform="translate(1035,445)">
+    <circle cx="0" cy="-15" r="9" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="-6" x2="0" y2="18" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="-12" y1="4" x2="12" y2="4" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="-10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <line x1="0" y1="18" x2="10" y2="34" stroke="#0f172a" stroke-width="1.8"/>
+    <text x="0" y="48" text-anchor="middle" font-size="11" fill="#0f172a">Sistema de Cocina</text>
+    <text x="0" y="61" text-anchor="middle" font-size="10" fill="#475569">(Secundario)</text>
+  </g>
+
+  <!-- Generalizations -->
+  <line x1="150" y1="160" x2="75" y2="95" stroke="#334155" stroke-width="1.3" marker-end="url(#arrowGen)"/>
+  <line x1="150" y1="370" x2="65" y2="110" stroke="#334155" stroke-width="1.3" marker-end="url(#arrowGen)"/>
+  <line x1="150" y1="570" x2="55" y2="112" stroke="#334155" stroke-width="1.3" marker-end="url(#arrowGen)"/>
+  <line x1="150" y1="705" x2="48" y2="112" stroke="#334155" stroke-width="1.3" marker-end="url(#arrowGen)"/>
+
+  <!-- Use Case Ellipses -->
+  <g fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5">
+    <ellipse cx="435" cy="95" rx="95" ry="25"/>
+    <ellipse cx="735" cy="95" rx="85" ry="24"/>
+    <ellipse cx="435" cy="165" rx="95" ry="25"/>
+    <ellipse cx="435" cy="235" rx="100" ry="25"/>
+    <ellipse cx="435" cy="300" rx="85" ry="24"/>
+    <ellipse cx="435" cy="375" rx="85" ry="25"/>
+    <ellipse cx="735" cy="375" rx="95" ry="25"/>
+    <ellipse cx="735" cy="450" rx="95" ry="25"/>
+    <ellipse cx="735" cy="525" rx="95" ry="25"/>
+    <ellipse cx="435" cy="580" rx="85" ry="25"/>
+    <ellipse cx="735" cy="605" rx="85" ry="24"/>
+    <ellipse cx="435" cy="650" rx="90" ry="24"/>
+    <ellipse cx="435" cy="725" rx="95" ry="25"/>
+    <ellipse cx="435" cy="830" rx="95" ry="25"/>
+    <ellipse cx="745" cy="830" rx="100" ry="25"/>
+  </g>
+
+  <!-- Use Case Labels -->
+  <g text-anchor="middle" font-size="11" fill="#0f172a">
+    <text x="435" y="92">CU-01</text><text x="435" y="105">Gestionar usuarios y roles</text>
+    <text x="735" y="92">CU-02</text><text x="735" y="105">Iniciar sesion</text>
+    <text x="435" y="162">CU-07</text><text x="435" y="175">Gestionar menu y categorias</text>
+    <text x="435" y="232">CU-08</text><text x="435" y="245">Controlar inventario</text>
+    <text x="435" y="297">CU-15</text><text x="435" y="310">Gestionar mesas</text>
+    <text x="435" y="372">CU-03</text><text x="435" y="385">Registrar pedido</text>
+    <text x="735" y="372">CU-04</text><text x="735" y="385">Enviar comanda a cocina</text>
+    <text x="735" y="447">CU-05</text><text x="735" y="460">Consultar estado de pedido</text>
+    <text x="735" y="522">CU-06</text><text x="735" y="535">Actualizar estado de pedido</text>
+    <text x="435" y="577">CU-09</text><text x="435" y="590">Generar factura</text>
+    <text x="735" y="602">CU-10</text><text x="735" y="615">Procesar pago</text>
+    <text x="435" y="647">CU-11</text><text x="435" y="660">Realizar cierre de caja</text>
+    <text x="435" y="722">CU-12</text><text x="435" y="735">Generar reportes de ventas</text>
+    <text x="435" y="827">CU-13</text><text x="435" y="840">Consultar menu digital QR</text>
+    <text x="745" y="827">CU-14</text><text x="745" y="840">Consultar consumo actual QR</text>
+  </g>
+
+  <!-- Associations -->
+  <g stroke="#475569" stroke-width="1.2">
+    <line x1="75" y1="60" x2="650" y2="95"/>
+    <line x1="185" y1="165" x2="340" y2="95"/>
+    <line x1="185" y1="165" x2="340" y2="165"/>
+    <line x1="185" y1="165" x2="335" y2="235"/>
+    <line x1="185" y1="165" x2="350" y2="300"/>
+    <line x1="185" y1="165" x2="340" y2="725"/>
+    <line x1="185" y1="375" x2="350" y2="300"/>
+    <line x1="185" y1="375" x2="350" y2="375"/>
+    <line x1="185" y1="375" x2="640" y2="450"/>
+    <line x1="185" y1="575" x2="350" y2="580"/>
+    <line x1="185" y1="575" x2="345" y2="650"/>
+    <line x1="185" y1="710" x2="340" y2="725"/>
+    <line x1="185" y1="830" x2="340" y2="830"/>
+    <line x1="830" y1="375" x2="1015" y2="445"/>
+    <line x1="830" y1="525" x2="1015" y2="445"/>
+  </g>
+
+  <!-- Include / Extend dashed arrows -->
+  <line x1="520" y1="375" x2="638" y2="375" stroke="#334155" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#arrowOpen)"/>
+  <text x="580" y="366" text-anchor="middle" font-size="10" font-style="italic" fill="#334155">&lt;&lt;include&gt;&gt;</text>
+
+  <line x1="505" y1="565" x2="645" y2="462" stroke="#334155" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#arrowOpen)"/>
+  <text x="575" y="505" text-anchor="middle" font-size="10" font-style="italic" fill="#334155">&lt;&lt;include&gt;&gt;</text>
+
+  <line x1="650" y1="605" x2="522" y2="585" stroke="#334155" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#arrowOpen)"/>
+  <text x="585" y="612" text-anchor="middle" font-size="10" font-style="italic" fill="#334155">&lt;&lt;extend&gt;&gt;</text>
+
+  <line x1="645" y1="830" x2="532" y2="830" stroke="#334155" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#arrowOpen)"/>
+  <text x="588" y="821" text-anchor="middle" font-size="10" font-style="italic" fill="#334155">&lt;&lt;extend&gt;&gt;</text>
+</svg>
