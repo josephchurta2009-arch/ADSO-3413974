@@ -17,9 +17,9 @@
 
 | # | Artefacto | Que cambie y por que | Enlace al commit |
 |---|---|---|---|
-| 1 | Diagrama de casos de uso UML | Se agruparon operaciones CRUD en casos de uso cohesivos (CU-01, CU-07, CU-08, CU-15), se anadio frontera del sistema, actor generalizado `Usuario Autenticado` y actor secundario `Sistema de Cocina` (criterio C4). | [Pendiente de segundo commit](https://github.com/josephchurta2009-arch/ADSO-3413974/commits/main) |
-| 2 | Relaciones del diagrama | Se definieron y justificaron las relaciones `<<include>>` y `<<extend>>` con la direccion correcta de flecha segun la seccion 7 de la rubrica (criterio C4). | [Pendiente de segundo commit](https://github.com/josephchurta2009-arch/ADSO-3413974/commits/main) |
-| 3 | Matriz requisito a caso de uso | Se separaron explicitamente los 17 RF de los RNF del SRS para asegurar trazabilidad del 100 % sin mezclar atributos de calidad como casos de uso (criterio C3). | [Pendiente de segundo commit](https://github.com/josephchurta2009-arch/ADSO-3413974/commits/main) |
+| 1 | Diagrama de casos de uso UML | Se agruparon operaciones CRUD en casos de uso cohesivos (CU-01, CU-07, CU-08, CU-15), se anadio frontera del sistema, actor generalizado `Usuario Autenticado` y actor secundario `Sistema de Cocina` (criterio C4). | [8de1799](https://github.com/josephchurta2009-arch/ADSO-3413974/commit/8de17993ea04bc7c2ec3ad459d189e1cc6c2fd75) |
+| 2 | Relaciones del diagrama | Se definieron y justificaron las relaciones `<<include>>` y `<<extend>>` con la direccion correcta de flecha segun la seccion 7 de la rubrica (criterio C4). | [cfbe539](https://github.com/josephchurta2009-arch/ADSO-3413974/commit/cfbe5392e88e166babd5817e845519524a2db202) |
+| 3 | Matriz requisito a caso de uso | Se separaron explicitamente los 17 RF de los RNF del SRS para asegurar trazabilidad del 100 % sin mezclar atributos de calidad como casos de uso (criterio C3). | [ec89b45](https://github.com/josephchurta2009-arch/ADSO-3413974/commit/ec89b45145b042ba4a873dbac3011038d147bd4f) |
 
 ## 4. Que construi nuevo
 
@@ -45,7 +45,7 @@
 - [x] Declaro que lo que tome de mi equipo o de otra fuente esta identificado en la seccion 2.
 - [x] Entiendo que el sabado 28 de noviembre de 2026 el instructor me hara **3 preguntas orales** sobre mis productos (una del producto 1, una del producto 2 y una tercera a su eleccion) y que, si respondo bien menos de 2, el producto sobre el que falle queda con tope de 50.
 
-Firma (usuario de GitHub y fecha): josephchurta2009-arch — 2026-11-25
+Firma (usuario de GitHub y fecha): josephchurta2009-arch — 2026-11-27
 
 ## 7. Uso de inteligencia artificial
 
@@ -55,6 +55,6 @@ Firma (usuario de GitHub y fecha): josephchurta2009-arch — 2026-11-25
 
 ## 8. Autocontrol antes del push
 
-- [ ] Hice commits propios en al menos 2 dias distintos entre la publicacion de la guia (sabado 21 de noviembre de 2026) y la entrega. *(Realizar un commit adicional el 26 o 27 de noviembre y actualizar los enlaces de la seccion 3).*
+- [x] Hice commits propios en al menos 2 dias distintos entre la publicacion de la guia (sabado 21 de noviembre de 2026) y la entrega (25 y 27 de noviembre de 2026).
 - [x] No subi el marco documental del instructor, plantillas sin diligenciar ni archivos de otras personas.
 - [x] Hice `push` y comprobe en GitHub que la carpeta esta publicada.
