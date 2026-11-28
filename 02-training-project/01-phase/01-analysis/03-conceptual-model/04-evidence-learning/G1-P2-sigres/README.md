@@ -18,9 +18,9 @@
 
 | # | Artefacto | Que cambie y por que | Enlace al commit |
 |---|---|---|---|
-| 1 | Plantillas extendidas de CU | Se reestructuraron las descripciones del SRS al formato Anexo A eliminando referencias tecnicas (JWT, SQL) (criterio C2). | [Pendiente de segundo commit](https://github.com/josephchurta2009-arch/ADSO-3413974/commits/main) |
-| 2 | Modelo de dominio | Se depuraron los identificadores tecnicos (`id`) para mantener unicamente conceptos y atributos de negocio sin metodos (criterio C3). | [Pendiente de segundo commit](https://github.com/josephchurta2009-arch/ADSO-3413974/commits/main) |
-| 3 | Diagrama de actividades y trazabilidad | Se agregaron guardas completas en decisiones alternas y se completo la matriz Anexo C hasta clase, entidad y pantalla (criterios C1 y C8). | [Pendiente de segundo commit](https://github.com/josephchurta2009-arch/ADSO-3413974/commits/main) |
+| 1 | Plantillas extendidas de CU | Se reestructuraron las descripciones del SRS al formato Anexo A eliminando referencias tecnicas (JWT, SQL) (criterio C2). | [255e4e5](https://github.com/josephchurta2009-arch/ADSO-3413974/commit/255e4e56b989caa9c6b897bf15eb203b9485fec7) |
+| 2 | Modelo de dominio | Se depuraron los identificadores tecnicos (`id`) para mantener unicamente conceptos y atributos de negocio sin metodos (criterio C3). | [2685bad](https://github.com/josephchurta2009-arch/ADSO-3413974/commit/2685bade50128ad035628d773c9b0c797c807be2) |
+| 3 | Diagrama de actividades y trazabilidad | Se agregaron guardas completas en decisiones alternas y se completo la matriz Anexo C hasta clase, entidad y pantalla (criterios C1 y C8). | [5889cc4](https://github.com/josephchurta2009-arch/ADSO-3413974/commit/5889cc4b36347a3a6e6e543c1ddc4f49bab009de) |
 
 ## 4. Que construi nuevo
 
@@ -48,7 +48,7 @@
 - [x] Declaro que lo que tome de mi equipo o de otra fuente esta identificado en la seccion 2.
 - [x] Entiendo que el sabado 28 de noviembre de 2026 el instructor me hara **3 preguntas orales** sobre mis productos (una del producto 1, una del producto 2 y una tercera a su eleccion) y que, si respondo bien menos de 2, el producto sobre el que falle queda con tope de 50.
 
-Firma (usuario de GitHub y fecha): josephchurta2009-arch — 2026-11-25
+Firma (usuario de GitHub y fecha): josephchurta2009-arch — 2026-11-27
 
 ## 7. Uso de inteligencia artificial
 
@@ -58,6 +58,6 @@ Firma (usuario de GitHub y fecha): josephchurta2009-arch — 2026-11-25
 
 ## 8. Autocontrol antes del push
 
-- [ ] Hice commits propios en al menos 2 dias distintos entre la publicacion de la guia (sabado 21 de noviembre de 2026) y la entrega. *(Realizar un commit adicional el 26 o 27 de noviembre y actualizar los enlaces de la seccion 3).*
+- [x] Hice commits propios en al menos 2 dias distintos entre la publicacion de la guia (sabado 21 de noviembre de 2026) y la entrega (25 y 27 de noviembre de 2026).
 - [x] No subi el marco documental del instructor, plantillas sin diligenciar ni archivos de otras personas.
 - [x] Hice `push` y comprobe en GitHub que la carpeta esta publicada.
